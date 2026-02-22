@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Heart } from "lucide-react";
 import { useToast } from "@/app/hooks/use-toast";
-import reception from "@/app/assets/reception.jpeg";
+import reception from "@/app/assets/mountain-and-field.jpeg";
 import Image from "next/image";
 
 const RSVPSection = () => {

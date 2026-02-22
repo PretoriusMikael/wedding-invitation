@@ -1,6 +1,7 @@
 import CoupleSection from "./components/CoupleSection";
 import EnvelopeHero from "./components/EnvelopeHero";
 import EventDetails from "./components/EventDetails";
+import Countdown from "./components/Countdown";
 import Accommodation from "./components/Accommodation";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
       <VenueSection />
       <DressCode />
       <Accommodation />
+      <Countdown />
       <FAQ />
       <RSVPSection />
       <Footer />

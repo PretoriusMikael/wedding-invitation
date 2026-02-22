@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import roughPaper from "@/app/assets/slightly-textured-wallpaper-pattern.jpg";
 
 type Phase = "closed" | "opening" | "open" | "leaving" | "done";
 
@@ -71,6 +72,9 @@ const EnvelopeHero = () => {
       className="fixed inset-0 z-50 select-none overflow-hidden"
       style={{
         backgroundColor: "hsl(35 38% 88%)",
+        backgroundImage: `url(${roughPaper.src})`,
+        backgroundSize: "cover",
+        backgroundBlendMode: "soft-light",
         cursor: isIdle ? "pointer" : "default",
       }}
       animate={{ y: isLeaving ? "-100%" : "0%" }}
@@ -86,6 +90,9 @@ const EnvelopeHero = () => {
         style={{
           clipPath: "polygon(0 0, 50% 50%, 0 100%)",
           backgroundColor: "hsl(30 32% 74%)",
+          backgroundImage: `url(${roughPaper.src})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "soft-light",
         }}
       />
 
@@ -95,6 +102,9 @@ const EnvelopeHero = () => {
         style={{
           clipPath: "polygon(100% 0, 50% 50%, 100% 100%)",
           backgroundColor: "hsl(30 32% 74%)",
+          backgroundImage: `url(${roughPaper.src})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "soft-light",
         }}
       />
 
@@ -104,6 +114,9 @@ const EnvelopeHero = () => {
         style={{
           clipPath: "polygon(0 100%, 50% 50%, 100% 100%)",
           backgroundColor: "hsl(35 42% 82%)",
+          backgroundImage: `url(${roughPaper.src})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "soft-light",
         }}
       />
 
@@ -120,7 +133,12 @@ const EnvelopeHero = () => {
         {/* Flap base colour */}
         <div
           className="absolute inset-0"
-          style={{ backgroundColor: "hsl(35 40% 85%)" }}
+          style={{
+            backgroundColor: "hsl(35 40% 85%)",
+            backgroundImage: `url(${roughPaper.src})`,
+            backgroundSize: "cover",
+            backgroundBlendMode: "soft-light",
+          }}
         />
         {/* Subtle crease shadow toward the tip */}
         <div
@@ -134,7 +152,7 @@ const EnvelopeHero = () => {
 
       {/* ── Wax seal — dissolves as the flap opens ── */}
       <motion.div
-        className="absolute z-30 pointer-events-none"
+        className="absolute z-30 pointer-events-none hover:scale-105"
         style={{
           top: "33%",
           left: "50%",
@@ -170,7 +188,7 @@ const EnvelopeHero = () => {
       </motion.div>
 
       {/* ── Address — fades out as the envelope opens ── */}
-      <motion.div
+      {/*<motion.div
         className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
         style={{ zIndex: 5 }}
         animate={{ opacity: isFlapOpen ? 0 : 1 }}
@@ -190,23 +208,37 @@ const EnvelopeHero = () => {
             Our Beloved Guests
           </p>
         </div>
-      </motion.div>
+      </motion.div>*/}
 
       {/* ── Invitation letter — rises from inside the envelope pocket ── */}
       <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{ zIndex: 15 }}
       >
         <motion.div
           className="w-full max-w-xs sm:max-w-sm md:max-w-md px-4"
           animate={{
-            y: isFlapOpen ? "0%" : "150%",
-            opacity: isFlapOpen ? 1 : 0,
+            y: isFlapOpen ? ["-20%", "-55%", "-0%"] : "20%",
+            opacity: isFlapOpen ? [0, 1, 1] : 0,
+            scale: isFlapOpen ? [0.28, 1.06, 1.0] : 0.88,
           }}
           transition={{
-            duration: 1.05,
-            delay: isFlapOpen ? 0.55 : 0,
-            ease: [0.2, 0.85, 0.3, 1],
+            y: {
+              duration: 1.5,
+              delay: isFlapOpen ? 0.45 : 0,
+              times: [0, 0.52, 1],
+              ease: ["easeOut", "easeInOut"],
+            },
+            opacity: {
+              duration: 0.12,
+              delay: isFlapOpen ? 0.45 : 0,
+            },
+            scale: {
+              duration: 1.5,
+              delay: isFlapOpen ? 0.45 : 0,
+              times: [0, 0.52, 1],
+              ease: ["easeOut", "easeInOut"],
+            },
           }}
         >
           <div

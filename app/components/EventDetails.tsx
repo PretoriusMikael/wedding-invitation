@@ -10,17 +10,18 @@ const EventDetails = () => {
     {
       icon: Calendar,
       title: "The Date",
-      content: "Saturday, September 12th, 2026",
+      content: "Saturday, 12 September, 2026",
     },
     {
       icon: Clock,
       title: "The Time",
-      content: "Ceremony at 4:00 PM\nReception to follow",
+      content: "Guests to arrive from 15:00\nCeremony start at 15:30",
     },
     {
       icon: MapPin,
       title: "The Place",
-      content: "Duvon Wine & Wedding Estate\n1234 Garden Lane, Charleston, SC",
+      content:
+        "Duvon Wine & Wedding Estate\nLittle Italy, Robertson, South Africa",
     },
   ];
 
@@ -44,9 +45,9 @@ const EventDetails = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
+          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
             Save the Date
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Wedding Details
           </h2>
@@ -78,7 +79,7 @@ const EventDetails = () => {
           ))}
         </div>
 
-        <motion.div
+        {/*<motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -90,7 +91,7 @@ const EventDetails = () => {
             one.&quot;
           </p>
           <p className="text-accent text-sm mt-2">— John Keats</p>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </section>
   );

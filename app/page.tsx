@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <EnvelopeHero />
-      <CoupleSection />
+      {/*<CoupleSection />*/}
       <OurStory />
       <EventDetails />
       <VenueSection />

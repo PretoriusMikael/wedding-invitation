@@ -8,7 +8,10 @@ import Image from "next/image";
 
 const VenueSection = () => {
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30">
+    <section
+      id="venue-section"
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30"
+    >
       <div className="absolute top-0 left-0 w-1/3 h-full opacity-20">
         <Image
           src={reception}
@@ -25,9 +28,9 @@ const VenueSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
+          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
             Where Dreams Come True
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             The Venue
           </h2>
@@ -70,8 +73,8 @@ const VenueSection = () => {
               <p className="text-muted-foreground font-body text-lg leading-relaxed">
                 Nestled in the heart of Roberston historic district, Duvon Wine
                 & Wedding Estate is a breathtaking venue featuring manicured
-                gardens, a stunning ballroom, and views that seem to belong in a
-                painting.
+                gardens and picturesque views that look as though they belong in
+                a painting.
               </p>
             </div>
 
@@ -87,7 +90,7 @@ const VenueSection = () => {
                   <p className="text-muted-foreground font-body">
                     Duvon Wine &amp; Wedding Estate
                     <br />
-                    Little Italy, Robertson, 6705
+                    Little Italy, Robertson, South Africa
                   </p>
                 </div>
               </div>
@@ -101,7 +104,7 @@ const VenueSection = () => {
                     Parking
                   </h4>
                   <p className="text-muted-foreground font-body">
-                    Parking will be made available for all guests
+                    Parking is available at the venue for all guests.
                   </p>
                 </div>
               </div>
@@ -124,11 +127,10 @@ const VenueSection = () => {
                       }
                     }}
                   >
-                    Accommodations
+                    Accommodation
                   </h4>
                   <p className="text-muted-foreground font-body">
-                    Refer back to the Accommodations section for more
-                    information.
+                    Refer to the Accommodation section for more information.
                   </p>
                 </div>
               </div>

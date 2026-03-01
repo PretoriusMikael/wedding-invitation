@@ -6,24 +6,34 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "Are children welcome?",
-    answer:
-      "We love your little ones! Children are welcome at our celebration. We kindly ask that parents keep an eye on their children during the ceremony so everyone can enjoy the special moments. We will have a dedicated kids' area at the reception to keep them entertained.",
-  },
-  {
     question: "Will the event be indoors or outdoors?",
     answer:
-      "Our ceremony and reception will be held outdoors in the beautiful garden grounds of Duvon Wine & Wedding Estate. We recommend comfortable footwear suitable for garden terrain. In the event of inclement weather, we have a stunning indoor backup venue ready to ensure the day goes perfectly.",
+      "Our ceremony and reception will take place outdoors in the beautiful garden grounds of Duvon Wine & Wedding Estate. We recommend wearing comfortable footwear suitable for walking on grass and uneven terrain. The ceremony area is covered in case of bad weather, and the reception will be held indoors, ensuring everyone can enjoy the evening comfortably.",
   },
   {
-    question: "Is there parking at the venue?",
+    question: "What time should I arrive?",
     answer:
-      "Yes! Duvon Wine & Wedding Estate has ample on-site parking available for all guests at no charge. Parking attendants will be on hand to assist you. If you plan on enjoying the celebrations, we strongly encourage you to arrange a designated driver or make use of nearby accommodation.",
+      "We kindly ask that guests arrive from 15:00, so you have time to get settled. The ceremony will begin promptly at 15:30, and we wouldn’t want you to miss a single moment of the celebration.",
+  },
+  {
+    question: "Are children welcome?",
+    answer:
+      "We love your little ones and know they bring joy, but we kindly ask that the wedding be an adults-only celebration. We appreciate your understanding and look forward to celebrating together.",
+  },
+  {
+    question: "Are plus-ones allowed?",
+    answer:
+      "To help us manage the event and ensure seating arrangements, we can only accommodate the guests listed on the invitation. We appreciate your understanding and look forward to celebrating with you.",
+  },
+  {
+    question: "Are there bar facilities at the reception",
+    answer:
+      "Yes! Drinks will be provided during the canapé hour, and wine will be available at each table during the reception. A cash bar will also be available for any additional beverages. Please note that outside drinks are not permitted at the venue.",
   },
   {
     question: "Is there a gift registry or preferred way to give gifts?",
     answer:
-      "Your presence is truly the greatest gift! However, if you would like to contribute something special, we have a gift registry available. We also welcome cash contributions toward our honeymoon fund. Details will be shared closer to the date — please feel free to reach out to us directly if you'd like more information in the meantime.",
+      "A registry will be shared closer to the date. Alternatively, cash gifts are always appreciated. If you’d like to contribute, we can provide the preferred payment details upon request.",
   },
 ];
 
@@ -35,7 +45,13 @@ interface FAQItemProps {
   onToggle: () => void;
 }
 
-const FAQItem = ({ question, answer, index, isOpen, onToggle }: FAQItemProps) => (
+const FAQItem = ({
+  question,
+  answer,
+  index,
+  isOpen,
+  onToggle,
+}: FAQItemProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -220,11 +236,11 @@ const FAQ = () => {
           >
             Still have questions? Reach out to us at{" "}
             <a
-              href="mailto:tamryn.heinrich2025@gmail.com"
+              href="mailto:swanepoel.hm@gmail.com"
               className="underline underline-offset-4"
               style={{ color: "hsl(350 45% 40%)" }}
             >
-              tamryn.heinrich2025@gmail.com
+              swanepoel.hm@gmail.com
             </a>
           </p>
         </motion.div>

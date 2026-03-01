@@ -182,7 +182,7 @@ const EnvelopeHero = () => {
             className="font-display text-xl md:text-2xl"
             style={{ color: "hsl(40 60% 90%)" }}
           >
-            T&amp;H
+            H&amp;T
           </span>
         </div>
       </motion.div>
@@ -260,7 +260,7 @@ const EnvelopeHero = () => {
               className="font-body tracking-[0.3em] uppercase text-xs mb-3"
               style={{ color: "hsl(20 15% 50%)" }}
             >
-              You are cordially invited
+              You are joyfully invited
             </p>
             <p
               className="font-body text-sm mb-5"
@@ -273,7 +273,7 @@ const EnvelopeHero = () => {
               className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight"
               style={{ color: "hsl(20 25% 18%)" }}
             >
-              Tamryn
+              Heinrich
               <br />
               <span
                 className="text-2xl sm:text-3xl"
@@ -282,7 +282,7 @@ const EnvelopeHero = () => {
                 &amp;
               </span>
               <br />
-              Heinrich
+              Tamryn
             </h1>
 
             <div className="flex justify-center my-6">
@@ -297,13 +297,13 @@ const EnvelopeHero = () => {
               className="font-body text-lg md:text-xl mb-1"
               style={{ color: "hsl(20 15% 40%)" }}
             >
-              September 12th, 2026
+              12 September, 2026
             </p>
             <p
               className="font-body text-sm tracking-widest"
               style={{ color: "hsl(20 15% 55%)" }}
             >
-              Little Italy, Robertson
+              DuVon Wine and Wedding Estate, Robertson
             </p>
 
             {/* Bottom ornament */}

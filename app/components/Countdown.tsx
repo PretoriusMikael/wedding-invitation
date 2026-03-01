@@ -11,7 +11,7 @@ interface TimeUnit {
 }
 
 function getTimeRemaining(): TimeUnit[] {
-  const target = new Date("2026-09-12T00:00:00").getTime();
+  const target = new Date("2026-09-12T15:00:00").getTime();
   const now = Date.now();
   const diff = Math.max(0, target - now);
 
@@ -157,9 +157,9 @@ const Countdown = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
+          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
             Mark Your Calendar
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             {isOver ? "The Day Is Here!" : "Counting Down"}
           </h2>

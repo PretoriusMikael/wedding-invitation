@@ -6,17 +6,18 @@ import mountainsAndField from "@/app/assets/mountain-and-field.jpeg";
 import Image from "next/image";
 
 const ladies = [
-  "Midi or full-length dresses",
+  // "Midi or full-length dresses",
   "Light, flowy fabrics",
   "Soft pastels & florals",
-  "Block heels or wedges",
+  "Block heels or elegant sandals",
+  "Colours are welcome",
 ];
 
 const gentlemen = [
-  "Lightweight suits or blazers",
-  "Soft, neutral tones",
+  "Chinos or dress trousers are welcome",
+  "Lightweight blazers, suits, and ties are optional",
   "Dress shoes or loafers",
-  "Ties optional",
+  "Soft colours are welcome",
 ];
 
 const DressCode = () => {
@@ -64,12 +65,12 @@ const DressCode = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <p
+          {/*<p
             className="font-body tracking-[0.3em] uppercase text-sm mb-4"
             style={{ color: "hsl(38 70% 50%)" }}
           >
             Dress to impress
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Dress Code
           </h2>
@@ -110,7 +111,7 @@ const DressCode = () => {
           style={{ color: "hsl(20 15% 45%)" }}
         >
           Think light, flowy fabrics, soft pastels, florals, and garden-inspired
-          elegance. Keep it fresh, elegant, and effortless!
+          elegance. Keep it fresh and elegant!
         </motion.p>
 
         {/* Ladies & Gentlemen cards */}
@@ -238,7 +239,7 @@ const DressCode = () => {
         </div>
 
         {/* Bottom note */}
-        <motion.div
+        {/*<motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
@@ -260,7 +261,7 @@ const DressCode = () => {
           >
             — Tom Ford
           </p>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </section>
   );

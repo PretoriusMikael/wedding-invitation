@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import couplePhoto from "@/app/assets/couple-photo.jpeg";
+import couplePhoto from "@/app/assets/couple-close-up.jpeg";
 import Image from "next/image";
 
 const OurStory = () => {
@@ -14,15 +14,15 @@ const OurStory = () => {
     },
     {
       year: "2020",
-      title: "An Impression that Lasted",
+      title: "An Impression That Lasted",
       description:
-        "As we spent more time together and shared our pasts, we realized our paths had crossed long before that market day. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn’t speak that evening, the moment left a quiet impression that stayed with him.",
+        "As we spent more time together and shared our pasts, we realized our paths had crossed long before that day at the market. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn’t speak that evening, the moment left a quiet impression that stayed with him.",
     },
     {
       year: "2022",
       title: "A Shared Beginning",
       description:
-        "Later that year, in December, we discovered that our birthdays are just one day apart. Aswe talked more, we realized we were born in the same hospital and perhaps even sharedthe same nursery in our very first days of life.",
+        "In December of 2018, we discovered that our birthdays are just one day apart. As we talked more, we realised that we were born in the same hospital and perhaps even shared the same nursery in the very first days of life.",
     },
     {
       year: "2024",
@@ -57,9 +57,9 @@ const OurStory = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
+          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
             How It All Began
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Our Love Story
           </h2>
@@ -88,9 +88,9 @@ const OurStory = () => {
                 className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
               >
                 <div className="bg-card p-6 rounded-lg shadow-lg">
-                  <span className="text-accent font-display text-2xl">
+                  {/*<span className="text-accent font-display text-2xl">
                     {item.year}
-                  </span>
+                  </span>*/}
                   <h3 className="font-display text-xl text-foreground mt-2 mb-2">
                     {item.title}
                   </h3>

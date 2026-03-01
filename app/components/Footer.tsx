@@ -14,10 +14,10 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-            Tamryn & Heinrich
+            Heinrich & Tamryn
           </h2>
           <p className="text-accent font-body text-xl mb-6">
-            September 12th, 2026
+            12 September, 2026
           </p>
 
           <div className="decorative-line max-w-xs mx-auto mb-8">

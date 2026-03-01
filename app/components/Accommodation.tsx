@@ -7,25 +7,71 @@ import garden from "@/app/assets/garden.jpeg";
 import Image from "next/image";
 
 const closeToVenue = [
-  { name: "Wederom Guesthouse", distance: "1 km" },
-  { name: "Goederede Guesthouse", distance: "2 km" },
-  { name: "Riviersight Guesthouse", distance: "4 km" },
-  { name: "Narina Guest Farm", distance: "4 km" },
-  { name: "Roam Rooiberg", distance: "5 km" },
+  {
+    name: "Wederom Guest Farm",
+    distance: "2 km",
+    href: "https://www.lekkeslaap.co.za/accommodation/wederom-hanepoot-huisies?ppc=AdWords_LS-DSAAccommName&gad_source=1&gad_campaignid=19150528781&gbraid=0AAAAAD2FOnPFSwDB6dad-xmOkylEtPCxb&gclid=CjwKCAiA1obMBhAbEiwAsUBbIpzhWLxFfHRDJlimlI2q1C5rrV-YYD6gxNiI3PVzt3SGw-4W7djkAhoCFxUQAvD_BwE",
+  },
+  {
+    name: "Goederede Guest Farm",
+    distance: "3 km",
+    href: "https://goedereede.co.za/",
+  },
+  {
+    name: "Rivierzicht River Resort",
+    distance: "5 km",
+    href: "https://www.rivierzicht-resort.com/cabins/",
+  },
+  {
+    name: "Nerina Guest Farm",
+    distance: "7 km",
+    href: "https://www.nerinaguestfarm.com/robertson-farm-accommodation-breede-river",
+  },
+  {
+    name: "Roam Rooiberg",
+    distance: "7 km",
+    href: "https://roamrooiberg.co.za/accommodation",
+  },
 ];
 
 const furtherAway = [
-  { name: "Robertson Small Hotel", distance: "12 km" },
-  { name: "Orange Grove", distance: "15 km" },
+  {
+    name: "Orange Grove Farm",
+    distance: "11 km",
+    href: "https://orangegrovefarm.co.za/",
+  },
+  {
+    name: "The Robertson Small Boutique Hotel",
+    distance: "12 km",
+    href: "https://thelivingjourneycollection.co.za/the-robertson-small-hotel/",
+  },
 ];
 
 const silverstrand = [
-  { name: "Albatross Country House" },
-  { name: "Robertson Halfway House" },
-  { name: "Muscat Mountain View" },
-  { name: "Bunker Lodge" },
-  { name: "12 Pond Close" },
-  { name: "Silver Eagle Lodge" },
+  {
+    name: "Albatross Lodge",
+    distance: "11km",
+    href: "https://www.lekkeslaap.co.za/accommodation/albatross-lodge-robertson",
+  },
+  {
+    name: "Robertson Halfway House",
+    distance: "11 km",
+    href: "https://www.lekkeslaap.co.za/accommodation/robertson-halfway-house",
+  },
+  {
+    name: "Muscat Manor",
+    distance: "11 km",
+    href: "https://www.airbnb.co.za/rooms/23587334?source_impression_id=p3_1770146390_P3qGJJPorqv9kwKB",
+  },
+  {
+    name: "Silver Pond Lodge",
+    distance: "11 km",
+    href: "https://www.booking.com/hotel/za/silver-pond-lodge.en-gb.html?aid=356980&label=gog235jc-10CAso-wFCEXNpbHZlci1wb25kLWxvZGdlSDNYA2j7AYgBAZgBM7gBF8gBDNgBA-gBAfgBAYgCAagCAbgC0JWJzAbAAgHSAiQzZTE4YmRmMi1jMDVhLTRmMzctYTk5YS1hZTQwYWVhNmNhMjfYAgHgAgE&sid=a60f77b14f13b806aa582d521b36f68f&dest_id=-1277201&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A,A&sb_price_type=total&sr_order=popularity&srepoch=1770146525&srpvid=24a1bf9c078547b4604508869bb08df8&type=total&ucfs=1&chal_t=1771585558034&force_referer=https%3A%2F%2Fsayi.do%2F",
+  },
+  {
+    name: "Silver Eagle Lodge",
+    href: "https://www.airbnb.co.za/rooms/7313730?search_mode=regular_search&adults=1&check_in=2026-03-09&check_out=2026-03-14&children=0&infants=0&pets=0&source_impression_id=p3_1770146572_P3zveyM6Vq5vmmsn&previous_page_section_name=1000",
+  },
 ];
 
 const containerVariants = {
@@ -41,10 +87,15 @@ const itemVariants = {
 interface AccommodationItemProps {
   name: string;
   distance?: string;
+  href?: string;
   index: number;
 }
 
-const AccommodationItem = ({ name, distance }: AccommodationItemProps) => (
+const AccommodationItem = ({
+  name,
+  distance,
+  href,
+}: AccommodationItemProps) => (
   <motion.li
     variants={itemVariants}
     className="flex items-center justify-between gap-4 py-3 border-b last:border-b-0"
@@ -54,12 +105,24 @@ const AccommodationItem = ({ name, distance }: AccommodationItemProps) => (
       <span style={{ color: "hsl(38 70% 50%)" }} className="text-sm">
         ✦
       </span>
-      <span
-        className="font-body text-base md:text-lg"
-        style={{ color: "hsl(20 20% 30%)" }}
-      >
-        {name}
-      </span>
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-body text-base md:text-lg underline underline-offset-2 hover:opacity-70 transition-opacity"
+          style={{ color: "hsl(20 20% 30%)" }}
+        >
+          {name}
+        </a>
+      ) : (
+        <span
+          className="font-body text-base md:text-lg"
+          style={{ color: "hsl(20 20% 30%)" }}
+        >
+          {name}
+        </span>
+      )}
     </div>
     {distance && (
       <span
@@ -182,12 +245,12 @@ const Accommodation = () => {
           viewport={{ once: true }}
           className="text-center mb-6"
         >
-          <p
+          {/*<p
             className="font-body tracking-[0.3em] uppercase text-sm mb-4"
             style={{ color: "hsl(38 70% 50%)" }}
           >
             Plan your stay
-          </p>
+          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Accommodation
           </h2>
@@ -219,15 +282,23 @@ const Accommodation = () => {
           className="flex justify-center mb-12"
         >
           <div
-            className="flex items-center gap-2 px-5 py-2 rounded-full border font-body text-sm"
+            className="flex items-center gap-2 px-5 py-2 rounded-full border font-body text-sm underline hover:cursor-pointer"
             style={{
               borderColor: "hsl(38 70% 50% / 0.35)",
               color: "hsl(20 20% 40%)",
               backgroundColor: "hsl(38 70% 50% / 0.06)",
             }}
+            onClick={() => {
+              const venueSection = document.getElementById("venue-section");
+              if (venueSection) {
+                venueSection.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            }}
           >
             <MapPin className="w-4 h-4" style={{ color: "hsl(38 70% 50%)" }} />
-            Duvon Wine &amp; Wedding Estate, Robertson
+            DuVon Wine &amp; Wedding Estate, Robertson
           </div>
         </motion.div>
 
@@ -251,6 +322,7 @@ const Accommodation = () => {
                 key={item.name}
                 name={item.name}
                 distance={item.distance}
+                href={item.href}
                 index={i}
               />
             ))}
@@ -274,6 +346,7 @@ const Accommodation = () => {
                 key={item.name}
                 name={item.name}
                 distance={item.distance}
+                href={item.href}
                 index={i}
               />
             ))}
@@ -292,7 +365,13 @@ const Accommodation = () => {
         >
           <div className="grid sm:grid-cols-2 gap-x-6">
             {silverstrand.map((item, i) => (
-              <AccommodationItem key={item.name} name={item.name} index={i} />
+              <AccommodationItem
+                key={item.name}
+                distance={item.distance}
+                name={item.name}
+                href={item.href}
+                index={i}
+              />
             ))}
           </div>
         </GroupCard>

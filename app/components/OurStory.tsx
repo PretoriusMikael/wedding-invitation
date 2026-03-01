@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import couplePhoto from "@/app/assets/couple-close-up.jpeg";
+import couplePhoto from "@/app/assets/couple-photo.jpeg";
 import Image from "next/image";
 
 const OurStory = () => {
@@ -41,7 +41,7 @@ const OurStory = () => {
   return (
     <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden">
       {/* Decorative Background Image */}
-      <div className="absolute top-0 left-0 w-1/3 h-full opacity-20">
+      <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
           src={couplePhoto}
           alt=""
@@ -87,7 +87,7 @@ const OurStory = () => {
               <div
                 className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
               >
-                <div className="bg-card p-6 rounded-lg shadow-lg">
+                <div className="glass p-6 rounded-lg shadow-lg">
                   {/*<span className="text-accent font-display text-2xl">
                     {item.year}
                   </span>*/}

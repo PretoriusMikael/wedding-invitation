@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Heart, Music, Plus, X } from "lucide-react";
 import { useToast } from "@/app/hooks/use-toast";
-import reception from "@/app/assets/mountain-and-field.jpeg";
+import reception from "@/app/assets/three-in-one.jpeg";
 import Image from "next/image";
 
 const RSVPSection = () => {
@@ -81,15 +81,14 @@ const RSVPSection = () => {
     >
       {/* Background image */}
       <div
-        className="absolute top-0 left-0 h-full opacity-20"
-        style={{ width: isSubmitted ? "100%" : "33.333%" }}
+        className={`absolute top-0 right-0 h-full opacity-30 sm:opacity-20 ${isSubmitted ? "w-full" : "w-full sm:w-1/3"}`}
       >
         <Image
           src={reception}
           alt=""
           className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-transparent to-background" />
+        <div className="absolute inset-0 bg-linear-to-l from-transparent to-background" />
       </div>
 
       <div className="container max-w-2xl relative z-10">
@@ -118,7 +117,7 @@ const RSVPSection = () => {
               <div className="mt-10 flex flex-col items-center gap-3">
                 <p
                   className="font-body text-sm"
-                  style={{ color: "hsl(20 15% 55%)" }}
+                  style={{ color: "hsl(var(--muted-foreground))" }}
                 >
                   RSVPing on behalf of someone else?
                 </p>
@@ -129,9 +128,9 @@ const RSVPSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="flex items-center gap-2 px-6 py-3 rounded-full font-body text-sm font-medium transition-colors"
                   style={{
-                    backgroundColor: "hsl(38 70% 50% / 0.1)",
-                    color: "hsl(38 70% 38%)",
-                    border: "1px solid hsl(38 70% 50% / 0.35)",
+                    backgroundColor: "hsl(var(--palette-amber) / 0.1)",
+                    color: "hsl(var(--palette-amber))",
+                    border: "1px solid hsl(var(--palette-amber) / 0.35)",
                   }}
                 >
                   <Check className="w-4 h-4" />
@@ -164,7 +163,7 @@ const RSVPSection = () => {
               {/* Form card */}
               <form
                 onSubmit={handleSubmit}
-                className="bg-card rounded-lg p-8 shadow-xl space-y-6"
+                className="glass rounded-lg p-8 shadow-xl space-y-6"
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -279,14 +278,14 @@ const RSVPSection = () => {
                           <span className="flex items-center gap-2">
                             <Music
                               className="w-4 h-4"
-                              style={{ color: "hsl(38 70% 50%)" }}
+                              style={{ color: "hsl(var(--palette-amber))" }}
                             />
                             What songs will get you on the dance floor?
                           </span>
                         </label>
                         <p
                           className="font-body text-sm mb-3"
-                          style={{ color: "hsl(20 15% 55%)" }}
+                          style={{ color: "hsl(var(--muted-foreground))" }}
                         >
                           Help us build the perfect playlist — add as many as
                           you like.
@@ -311,9 +310,11 @@ const RSVPSection = () => {
                             whileTap={{ scale: 0.95 }}
                             className="flex items-center gap-1.5 px-4 py-3 rounded-lg font-body text-sm font-medium shrink-0 transition-colors"
                             style={{
-                              backgroundColor: "hsl(38 70% 50% / 0.12)",
-                              color: "hsl(38 70% 38%)",
-                              border: "1px solid hsl(38 70% 50% / 0.3)",
+                              backgroundColor:
+                                "hsl(var(--palette-amber) / 0.12)",
+                              color: "hsl(var(--palette-amber))",
+                              border:
+                                "1px solid hsl(var(--palette-amber) / 0.3)",
                             }}
                           >
                             <Plus className="w-4 h-4" />
@@ -329,7 +330,9 @@ const RSVPSection = () => {
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
                               className="mt-3 rounded-lg overflow-hidden border"
-                              style={{ borderColor: "hsl(38 70% 50% / 0.2)" }}
+                              style={{
+                                borderColor: "hsl(var(--palette-amber) / 0.2)",
+                              }}
                             >
                               <AnimatePresence initial={false}>
                                 {songs.map((song, i) => (
@@ -343,21 +346,25 @@ const RSVPSection = () => {
                                     style={{
                                       backgroundColor:
                                         i % 2 === 0
-                                          ? "hsl(38 70% 50% / 0.04)"
-                                          : "hsl(38 70% 50% / 0.09)",
+                                          ? "hsl(var(--palette-amber) / 0.04)"
+                                          : "hsl(var(--palette-amber) / 0.09)",
                                       borderBottom:
                                         i < songs.length - 1
-                                          ? "1px solid hsl(38 70% 50% / 0.15)"
+                                          ? "1px solid hsl(var(--palette-amber) / 0.15)"
                                           : "none",
                                     }}
                                   >
                                     <Music
                                       className="w-3.5 h-3.5 shrink-0"
-                                      style={{ color: "hsl(38 70% 50%)" }}
+                                      style={{
+                                        color: "hsl(var(--palette-amber))",
+                                      }}
                                     />
                                     <span
                                       className="flex-1 font-body text-sm"
-                                      style={{ color: "hsl(20 20% 30%)" }}
+                                      style={{
+                                        color: "hsl(var(--foreground))",
+                                      }}
                                     >
                                       {song}
                                     </span>
@@ -369,7 +376,9 @@ const RSVPSection = () => {
                                     >
                                       <X
                                         className="w-3.5 h-3.5"
-                                        style={{ color: "hsl(0 50% 55%)" }}
+                                        style={{
+                                          color: "hsl(var(--palette-coral))",
+                                        }}
                                       />
                                     </button>
                                   </motion.li>
@@ -377,7 +386,9 @@ const RSVPSection = () => {
                               </AnimatePresence>
                               <div
                                 className="px-4 py-2 font-body text-xs text-right"
-                                style={{ color: "hsl(20 15% 60%)" }}
+                                style={{
+                                  color: "hsl(var(--muted-foreground))",
+                                }}
                               >
                                 {songs.length} song
                                 {songs.length !== 1 ? "s" : ""} added

@@ -1,5 +1,6 @@
 import CoupleSection from "./components/CoupleSection";
 import EnvelopeHero from "./components/EnvelopeHero";
+import InvitationLetter from "./components/InvitationLetter";
 import EventDetails from "./components/EventDetails";
 import Countdown from "./components/Countdown";
 import Accommodation from "./components/Accommodation";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <EnvelopeHero />
+      <InvitationLetter />
       {/*<CoupleSection />*/}
       <OurStory />
       <EventDetails />

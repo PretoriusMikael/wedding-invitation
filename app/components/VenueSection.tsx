@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Car, Plane } from "lucide-react";
+import { MapPin, Car, Plane, House } from "lucide-react";
 import venueImage from "@/app/assets/duvon-directions.jpeg";
 import reception from "@/app/assets/reception-blurred.jpeg";
 import Image from "next/image";
@@ -12,7 +12,7 @@ const VenueSection = () => {
       id="venue-section"
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30"
     >
-      <div className="absolute top-0 left-0 w-1/3 h-full opacity-20">
+      <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
           src={reception}
           alt=""
@@ -111,7 +111,7 @@ const VenueSection = () => {
 
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                  <Plane className="w-5 h-5 text-accent" />
+                  <House className="w-5 h-5 text-accent" />
                 </div>
                 <div>
                   <h4

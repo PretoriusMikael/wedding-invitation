@@ -4,13 +4,15 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import roughPaper from "@/app/assets/slightly-textured-wallpaper-pattern.jpg";
+import Image from "next/image";
+import logo from "@/app/assets/ht-logo.jpeg";
 
-type Phase = "closed" | "opening" | "open" | "leaving" | "done";
+type Phase = "closed" | "opening" | "leaving" | "done";
 
 const EnvelopeHero = () => {
   const [phase, setPhase] = useState<Phase>("closed");
 
-  // Lock scroll behind the overlay while active
+  // Lock scroll while the envelope overlay is active
   useEffect(() => {
     if (phase === "done") return;
     const prev = document.documentElement.style.overflow;
@@ -21,17 +23,13 @@ const EnvelopeHero = () => {
   }, [phase]);
 
   const handleOpen = useCallback(() => {
-    if (phase === "closed") {
-      // First interaction — open the flap and raise the letter
-      setPhase("opening");
-      setTimeout(() => setPhase("open"), 1700);
-    } else if (phase === "open") {
-      // Second interaction — slide the whole overlay away
-      setPhase("leaving");
-    }
+    if (phase !== "closed") return;
+    // Open the flap, then after the flap animation auto-slide up
+    setPhase("opening");
+    setTimeout(() => setPhase("leaving"), 700);
   }, [phase]);
 
-  // Wheel trigger — also blocks scroll-through while animating
+  // Wheel trigger
   useEffect(() => {
     if (phase === "done") return;
     const onWheel = (e: WheelEvent) => {
@@ -63,33 +61,31 @@ const EnvelopeHero = () => {
   if (phase === "done") return null;
 
   const isFlapOpen = phase !== "closed";
-
   const isLeaving = phase === "leaving";
-  const isIdle = phase === "closed" || phase === "open";
 
   return (
     <motion.div
       className="fixed inset-0 z-50 select-none overflow-hidden"
       style={{
-        backgroundColor: "hsl(35 38% 88%)",
+        backgroundColor: "hsl(var(--envelope))",
         backgroundImage: `url(${roughPaper.src})`,
         backgroundSize: "cover",
         backgroundBlendMode: "soft-light",
-        cursor: isIdle ? "pointer" : "default",
+        cursor: phase === "closed" ? "pointer" : "default",
       }}
       animate={{ y: isLeaving ? "-100%" : "0%" }}
       transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => {
         if (isLeaving) setPhase("done");
       }}
-      onClick={isIdle ? handleOpen : undefined}
+      onClick={phase === "closed" ? handleOpen : undefined}
     >
       {/* ── Left diagonal fold ── */}
       <div
         className="absolute inset-0 z-0"
         style={{
           clipPath: "polygon(0 0, 50% 50%, 0 100%)",
-          backgroundColor: "hsl(30 32% 74%)",
+          backgroundColor: "hsl(var(--envelope-dark))",
           backgroundImage: `url(${roughPaper.src})`,
           backgroundSize: "cover",
           backgroundBlendMode: "soft-light",
@@ -101,7 +97,7 @@ const EnvelopeHero = () => {
         className="absolute inset-0 z-0"
         style={{
           clipPath: "polygon(100% 0, 50% 50%, 100% 100%)",
-          backgroundColor: "hsl(30 32% 74%)",
+          backgroundColor: "hsl(var(--envelope-dark))",
           backgroundImage: `url(${roughPaper.src})`,
           backgroundSize: "cover",
           backgroundBlendMode: "soft-light",
@@ -113,7 +109,7 @@ const EnvelopeHero = () => {
         className="absolute inset-0 z-10"
         style={{
           clipPath: "polygon(0 100%, 50% 50%, 100% 100%)",
-          backgroundColor: "hsl(35 42% 82%)",
+          backgroundColor: "hsl(var(--envelope))",
           backgroundImage: `url(${roughPaper.src})`,
           backgroundSize: "cover",
           backgroundBlendMode: "soft-light",
@@ -134,7 +130,7 @@ const EnvelopeHero = () => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: "hsl(35 40% 85%)",
+            backgroundColor: "hsl(var(--envelope-flap))",
             backgroundImage: `url(${roughPaper.src})`,
             backgroundSize: "cover",
             backgroundBlendMode: "soft-light",
@@ -145,14 +141,14 @@ const EnvelopeHero = () => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, transparent 55%, hsl(30 30% 60% / 0.22) 100%)",
+              "linear-gradient(to bottom, transparent 55%, hsl(var(--envelope-dark) / 0.22) 100%)",
           }}
         />
       </motion.div>
 
       {/* ── Wax seal — dissolves as the flap opens ── */}
       <motion.div
-        className="absolute z-30 pointer-events-none hover:scale-105"
+        className="absolute z-30 pointer-events-none"
         style={{
           top: "33%",
           left: "50%",
@@ -169,173 +165,48 @@ const EnvelopeHero = () => {
         <div
           className="w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center relative"
           style={{
-            backgroundColor: "hsl(350 50% 38%)",
+            backgroundColor: "hsl(var(--wax-seal))",
             boxShadow:
-              "0 6px 28px hsl(350 50% 30% / 0.45), inset 0 1px 0 rgba(255,255,255,0.15)",
+              "0 6px 28px hsl(var(--wax-seal) / 0.45), inset 0 1px 0 rgba(255,255,255,0.15)",
           }}
         >
           <div
             className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full"
-            style={{ border: "1.5px solid hsl(40 60% 75% / 0.5)" }}
+            style={{ border: "1.5px solid hsl(var(--palette-blue) / 0.5)" }}
           />
           <span
             className="font-display text-xl md:text-2xl"
-            style={{ color: "hsl(40 60% 90%)" }}
+            style={{ color: "hsl(var(--palette-blue))" }}
           >
-            H&amp;T
+            <Image
+              src={logo}
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
           </span>
         </div>
       </motion.div>
 
-      {/* ── Address — fades out as the envelope opens ── */}
-      {/*<motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
-        style={{ zIndex: 5 }}
-        animate={{ opacity: isFlapOpen ? 0 : 1 }}
-        transition={{ duration: 0.35 }}
-      >
-        <div className="mt-32 md:mt-40 text-center space-y-1 opacity-40">
-          <p
-            className="font-body tracking-[0.25em] uppercase text-xs"
-            style={{ color: "hsl(20 25% 30%)" }}
-          >
-            To
-          </p>
-          <p
-            className="font-display text-lg md:text-2xl"
-            style={{ color: "hsl(20 25% 30%)" }}
-          >
-            Our Beloved Guests
-          </p>
-        </div>
-      </motion.div>*/}
-
-      {/* ── Invitation letter — rises from inside the envelope pocket ── */}
-      <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        style={{ zIndex: 15 }}
-      >
-        <motion.div
-          className="w-full max-w-xs sm:max-w-sm md:max-w-md px-4"
-          animate={{
-            y: isFlapOpen ? ["-20%", "-55%", "-0%"] : "20%",
-            opacity: isFlapOpen ? [0, 1, 1] : 0,
-            scale: isFlapOpen ? [0.28, 1.06, 1.0] : 0.88,
-          }}
-          transition={{
-            y: {
-              duration: 1.5,
-              delay: isFlapOpen ? 0.45 : 0,
-              times: [0, 0.52, 1],
-              ease: ["easeOut", "easeInOut"],
-            },
-            opacity: {
-              duration: 0.12,
-              delay: isFlapOpen ? 0.45 : 0,
-            },
-            scale: {
-              duration: 1.5,
-              delay: isFlapOpen ? 0.45 : 0,
-              times: [0, 0.52, 1],
-              ease: ["easeOut", "easeInOut"],
-            },
-          }}
-        >
-          <div
-            className="rounded-lg text-center px-8 py-10 md:px-12 md:py-14"
-            style={{
-              backgroundColor: "hsl(40 35% 98%)",
-              boxShadow:
-                "0 24px 80px hsl(20 25% 15% / 0.22), 0 4px 16px hsl(20 25% 15% / 0.1)",
-            }}
-          >
-            {/* Top ornament */}
-            <div className="flex justify-center mb-6">
-              <div className="decorative-line w-32">
-                <span style={{ color: "hsl(38 70% 50%)" }}>✦</span>
-              </div>
-            </div>
-
-            <p
-              className="font-body tracking-[0.3em] uppercase text-xs mb-3"
-              style={{ color: "hsl(20 15% 50%)" }}
-            >
-              You are joyfully invited
-            </p>
-            <p
-              className="font-body text-sm mb-5"
-              style={{ color: "hsl(38 70% 45%)" }}
-            >
-              to the wedding of
-            </p>
-
-            <h1
-              className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight"
-              style={{ color: "hsl(20 25% 18%)" }}
-            >
-              Heinrich
-              <br />
-              <span
-                className="text-2xl sm:text-3xl"
-                style={{ color: "hsl(38 70% 50%)" }}
-              >
-                &amp;
-              </span>
-              <br />
-              Tamryn
-            </h1>
-
-            <div className="flex justify-center my-6">
-              <div className="decorative-line w-40">
-                <span style={{ color: "hsl(38 70% 50%)", fontSize: "1.1rem" }}>
-                  ♥
-                </span>
-              </div>
-            </div>
-
-            <p
-              className="font-body text-lg md:text-xl mb-1"
-              style={{ color: "hsl(20 15% 40%)" }}
-            >
-              12 September, 2026
-            </p>
-            <p
-              className="font-body text-sm tracking-widest"
-              style={{ color: "hsl(20 15% 55%)" }}
-            >
-              DuVon Wine and Wedding Estate, Robertson
-            </p>
-
-            {/* Bottom ornament */}
-            <div className="flex justify-center mt-6">
-              <div className="decorative-line w-32">
-                <span style={{ color: "hsl(38 70% 50%)" }}>✦</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* ── Scroll / tap hint — text changes between the two idle states ── */}
+      {/* ── Scroll / tap hint — only shown while closed ── */}
       <motion.div
         className="absolute bottom-8 left-1/2 z-40 flex flex-col items-center gap-2 pointer-events-none"
         style={{ translateX: "-50%" }}
         animate={{
-          opacity: isIdle ? 1 : 0,
-          y: isIdle ? 0 : 10,
+          opacity: phase === "closed" ? 1 : 0,
+          y: phase === "closed" ? 0 : 10,
         }}
         transition={{
-          delay: phase === "closed" ? 1.2 : phase === "open" ? 0.4 : 0,
+          delay: phase === "closed" ? 1.2 : 0,
           duration: 0.5,
         }}
       >
         <p
           className="font-body tracking-widest uppercase text-xs"
-          style={{ color: "hsl(20 20% 40%)" }}
+          style={{ color: "hsl(var(--muted-foreground))" }}
         >
-          {phase === "open"
-            ? "Scroll or tap to continue"
-            : "Scroll or tap to open"}
+          Scroll or tap to open
         </p>
         <motion.div
           animate={{ y: [0, 7, 0] }}
@@ -343,7 +214,7 @@ const EnvelopeHero = () => {
         >
           <ChevronDown
             className="w-4 h-4"
-            style={{ color: "hsl(38 70% 50%)" }}
+            style={{ color: "hsl(var(--palette-amber))" }}
           />
         </motion.div>
       </motion.div>

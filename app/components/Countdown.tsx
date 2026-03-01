@@ -49,11 +49,10 @@ function CountUnit({ value, label, index }: CountUnitProps) {
     >
       {/* Card */}
       <div
-        className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg flex items-center justify-center border-ornate"
+        className="glass relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg flex items-center justify-center border-2 border-accent/30"
         style={{
-          backgroundColor: "hsl(40 35% 98%)",
           boxShadow:
-            "0 8px 32px hsl(20 25% 15% / 0.12), 0 2px 8px hsl(20 25% 15% / 0.08)",
+            "0 8px 32px hsl(var(--foreground) / 0.12), 0 2px 8px hsl(var(--foreground) / 0.08)",
         }}
       >
         {/* Subtle top-to-bottom gradient split */}
@@ -61,28 +60,31 @@ function CountUnit({ value, label, index }: CountUnitProps) {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, hsl(40 30% 96% / 0.6) 0%, transparent 50%, hsl(35 25% 90% / 0.4) 100%)",
+              "linear-gradient(180deg, hsl(var(--background) / 0.6) 0%, transparent 50%, hsl(var(--border) / 0.4) 100%)",
           }}
         />
 
         {/* Number — AnimatePresence swaps the digit when it changes */}
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={value}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="font-display select-none relative z-10"
-            style={{
-              fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
-              color: "hsl(20 25% 18%)",
-              lineHeight: 1,
-            }}
-          >
-            {pad(value)}
-          </motion.span>
-        </AnimatePresence>
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={value}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="font-cinzel select-none"
+              style={{
+                fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
+                color: "hsl(var(--foreground))",
+                lineHeight: 1,
+                display: "block",
+              }}
+            >
+              {pad(value)}
+            </motion.span>
+          </AnimatePresence>
+        </div>
 
         {/* Horizontal crease line */}
         <div
@@ -90,7 +92,7 @@ function CountUnit({ value, label, index }: CountUnitProps) {
           style={{
             top: "50%",
             height: "1px",
-            background: "hsl(35 25% 85% / 0.8)",
+            background: "hsl(var(--border) / 0.8)",
           }}
         />
       </div>
@@ -98,7 +100,7 @@ function CountUnit({ value, label, index }: CountUnitProps) {
       {/* Label */}
       <p
         className="font-body tracking-[0.25em] uppercase text-xs"
-        style={{ color: "hsl(20 15% 50%)" }}
+        style={{ color: "hsl(var(--muted-foreground))" }}
       >
         {label}
       </p>
@@ -144,7 +146,7 @@ const Countdown = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, hsl(38 70% 50% / 0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--palette-amber) / 0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -157,9 +159,6 @@ const Countdown = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
-            Mark Your Calendar
-          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             {isOver ? "The Day Is Here!" : "Counting Down"}
           </h2>
@@ -173,7 +172,7 @@ const Countdown = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
               className="font-body text-lg mt-6 italic"
-              style={{ color: "hsl(20 15% 50%)" }}
+              style={{ color: "hsl(var(--muted-foreground))" }}
             >
               Until we say &ldquo;I do&rdquo;
             </motion.p>
@@ -216,7 +215,7 @@ const Countdown = () => {
           >
             <p
               className="font-display text-3xl md:text-5xl"
-              style={{ color: "hsl(38 70% 50%)" }}
+              style={{ color: "hsl(var(--palette-amber))" }}
             >
               Today we celebrate love ♥
             </p>

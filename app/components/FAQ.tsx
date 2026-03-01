@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "What time should I arrive?",
     answer:
-      "We kindly ask that guests arrive from 15:00, so you have time to get settled. The ceremony will begin promptly at 15:30, and we wouldn’t want you to miss a single moment of the celebration.",
+      "We kindly ask that guests arrive from 15:00, so you have time to get settled. The ceremony will begin promptly at 15:30, and we wouldn't want you to miss a single moment of the celebration.",
   },
   {
     question: "Are children welcome?",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Is there a gift registry or preferred way to give gifts?",
     answer:
-      "A registry will be shared closer to the date. Alternatively, cash gifts are always appreciated. If you’d like to contribute, we can provide the preferred payment details upon request.",
+      "A registry will be shared closer to the date. Alternatively, cash gifts are always appreciated. If you'd like to contribute, we can provide the preferred payment details upon request.",
   },
 ];
 
@@ -57,12 +57,11 @@ const FAQItem = ({
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
     viewport={{ once: true }}
-    className="rounded-2xl overflow-hidden"
+    className="glass rounded-2xl overflow-hidden"
     style={{
-      backgroundColor: "hsl(40 35% 98%)",
       boxShadow: isOpen
-        ? "0 8px 40px hsl(20 25% 15% / 0.1), 0 2px 8px hsl(20 25% 15% / 0.06)"
-        : "0 2px 12px hsl(20 25% 15% / 0.06)",
+        ? "0 8px 40px hsl(var(--foreground) / 0.1), 0 2px 8px hsl(var(--foreground) / 0.06)"
+        : "0 2px 12px hsl(var(--foreground) / 0.06)",
       transition: "box-shadow 0.3s ease",
     }}
   >
@@ -76,9 +75,11 @@ const FAQItem = ({
           className="font-display text-lg shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm"
           style={{
             backgroundColor: isOpen
-              ? "hsl(350 45% 35%)"
-              : "hsl(38 70% 50% / 0.12)",
-            color: isOpen ? "hsl(40 30% 96%)" : "hsl(38 70% 45%)",
+              ? "hsl(var(--palette-coral))"
+              : "hsl(var(--palette-amber) / 0.12)",
+            color: isOpen
+              ? "hsl(var(--primary-foreground))"
+              : "hsl(var(--palette-amber))",
             transition: "background-color 0.3s ease, color 0.3s ease",
           }}
         >
@@ -87,7 +88,9 @@ const FAQItem = ({
         <span
           className="font-display text-lg md:text-xl"
           style={{
-            color: isOpen ? "hsl(350 45% 35%)" : "hsl(20 25% 22%)",
+            color: isOpen
+              ? "hsl(var(--palette-coral))"
+              : "hsl(var(--foreground))",
             transition: "color 0.3s ease",
           }}
         >
@@ -101,14 +104,20 @@ const FAQItem = ({
         className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: isOpen
-            ? "hsl(350 45% 35% / 0.1)"
-            : "hsl(38 70% 50% / 0.1)",
+            ? "hsl(var(--palette-coral) / 0.1)"
+            : "hsl(var(--palette-amber) / 0.1)",
         }}
       >
         {isOpen ? (
-          <Minus className="w-4 h-4" style={{ color: "hsl(350 45% 35%)" }} />
+          <Minus
+            className="w-4 h-4"
+            style={{ color: "hsl(var(--palette-coral))" }}
+          />
         ) : (
-          <Plus className="w-4 h-4" style={{ color: "hsl(38 70% 45%)" }} />
+          <Plus
+            className="w-4 h-4"
+            style={{ color: "hsl(var(--palette-amber))" }}
+          />
         )}
       </motion.div>
     </button>
@@ -126,12 +135,12 @@ const FAQItem = ({
         >
           <div
             className="px-7 pb-7 pt-0"
-            style={{ borderTop: "1px solid hsl(35 25% 90%)" }}
+            style={{ borderTop: "1px solid hsl(var(--border))" }}
           >
             <div className="pt-5 pl-11">
               <p
                 className="font-body text-base md:text-lg leading-relaxed"
-                style={{ color: "hsl(20 15% 45%)" }}
+                style={{ color: "hsl(var(--muted-foreground))" }}
               >
                 {answer}
               </p>
@@ -158,14 +167,14 @@ const FAQ = () => {
           className="absolute -top-16 -left-16 w-72 h-72 rounded-full opacity-10"
           style={{
             background:
-              "radial-gradient(circle, hsl(350 45% 35%) 0%, transparent 70%)",
+              "radial-gradient(circle, hsl(var(--palette-coral)) 0%, transparent 70%)",
           }}
         />
         <div
           className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full opacity-10"
           style={{
             background:
-              "radial-gradient(circle, hsl(38 70% 50%) 0%, transparent 70%)",
+              "radial-gradient(circle, hsl(var(--palette-amber)) 0%, transparent 70%)",
           }}
         />
       </div>
@@ -181,7 +190,7 @@ const FAQ = () => {
         >
           <p
             className="font-body tracking-[0.3em] uppercase text-sm mb-4"
-            style={{ color: "hsl(38 70% 50%)" }}
+            style={{ color: "hsl(var(--palette-amber))" }}
           >
             Got questions?
           </p>
@@ -197,7 +206,7 @@ const FAQ = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
             className="font-body text-lg mt-6 max-w-xl mx-auto"
-            style={{ color: "hsl(20 15% 50%)" }}
+            style={{ color: "hsl(var(--muted-foreground))" }}
           >
             We&apos;ve answered some of the most common questions below. If you
             don&apos;t find what you&apos;re looking for, please don&apos;t
@@ -227,18 +236,15 @@ const FAQ = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <div className="decorative-line max-w-sm mx-auto mb-6">
-            <span style={{ color: "hsl(38 70% 50%)" }}>✦</span>
-          </div>
           <p
             className="font-body text-base italic"
-            style={{ color: "hsl(20 15% 52%)" }}
+            style={{ color: "hsl(var(--muted-foreground))" }}
           >
             Still have questions? Reach out to us at{" "}
             <a
               href="mailto:swanepoel.hm@gmail.com"
               className="underline underline-offset-4"
-              style={{ color: "hsl(350 45% 40%)" }}
+              style={{ color: "hsl(var(--palette-coral))" }}
             >
               swanepoel.hm@gmail.com
             </a>

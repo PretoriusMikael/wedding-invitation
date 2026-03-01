@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Clock, MapPin } from "lucide-react";
-import flowersImage from "@/app/assets/flowers.jpg";
+import flowersImage from "@/app/assets/duvon-entrance.jpeg";
 import Image from "next/image";
 
 const EventDetails = () => {
@@ -28,11 +28,11 @@ const EventDetails = () => {
   return (
     <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30">
       {/* Decorative Background Image */}
-      <div className="absolute top-0 right-0 w-1/3 h-full opacity-20">
+      <div className="absolute top-0 right-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
           src={flowersImage}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[right_25%_top_0]"
         />
         <div className="absolute inset-0 bg-linear-to-l from-transparent to-background" />
       </div>
@@ -64,7 +64,7 @@ const EventDetails = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-card rounded-lg p-8 text-center shadow-lg border-ornate"
+              className="glass rounded-lg p-8 text-center shadow-lg border-2 border-accent/30"
             >
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
                 <detail.icon className="w-8 h-8 text-accent" />

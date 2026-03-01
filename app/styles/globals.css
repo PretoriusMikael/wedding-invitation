@@ -44,9 +44,17 @@
     --color-envelope-flap: hsl(var(--envelope-flap));
     --color-wax-seal: hsl(var(--wax-seal));
 
+    /* Raw palette colours — use anywhere via var(--palette-*) */
+    --color-palette-blue: hsl(var(--palette-blue));
+    --color-palette-olive: hsl(var(--palette-olive));
+    --color-palette-amber: hsl(var(--palette-amber));
+    --color-palette-coral: hsl(var(--palette-coral));
+    --color-palette-pink: hsl(var(--palette-pink));
+
     /* Fonts — referencing Next.js font CSS variables */
     --font-display: var(--font-playfair), "Playfair Display", serif;
     --font-body: var(--font-cormorant), "Cormorant Garamond", serif;
+    --font-cinzel: var(--font-cinzel), "Cinzel", serif;
 
     /* Border radius */
     --radius: 0.5rem;
@@ -54,81 +62,100 @@
 
 @layer base {
     :root {
-        /* Warm cream/ivory base */
-        --background: 40 30% 96%;
-        --foreground: 20 25% 20%;
+        /* ── Raw palette ─────────────────────────────────────────
+           #c0cfe0  blue
+           #c5c463  olive
+           #f2af3f  amber
+           #ef5356  coral
+           #f86aa4  pink
+        ──────────────────────────────────────────────────────── */
+        --palette-blue: 212 34% 82%;
+        --palette-olive: 59 46% 58%;
+        --palette-amber: 38 87% 60%;
+        --palette-coral: 359 65% 55%;
+        --palette-pink: 336 91% 69%;
+
+        /* Background & Foreground */
+        --background: 212 30% 97%;
+        --foreground: 212 30% 15%;
 
         /* Card surfaces */
-        --card: 40 35% 98%;
-        --card-foreground: 20 25% 20%;
+        --card: 212 30% 99%;
+        --card-foreground: 212 30% 15%;
 
         /* Popover */
-        --popover: 40 35% 98%;
-        --popover-foreground: 20 25% 20%;
+        --popover: 212 30% 99%;
+        --popover-foreground: 212 30% 15%;
 
-        /* Deep burgundy/wine primary */
-        --primary: 350 45% 35%;
-        --primary-foreground: 40 30% 96%;
+        /* Primary — coral */
+        --primary: 359 65% 55%;
+        --primary-foreground: 0 0% 100%;
 
-        /* Sage green secondary */
-        --secondary: 140 20% 75%;
-        --secondary-foreground: 20 25% 20%;
+        /* Secondary — blue */
+        --secondary: 212 34% 82%;
+        --secondary-foreground: 212 30% 20%;
 
-        /* Muted surfaces */
-        --muted: 40 20% 90%;
-        --muted-foreground: 20 15% 45%;
+        /* Muted */
+        --muted: 212 20% 92%;
+        --muted-foreground: 212 20% 48%;
 
-        /* Gold accent */
-        --accent: 38 70% 50%;
-        --accent-foreground: 20 25% 15%;
+        /* Accent — amber */
+        --accent: 38 87% 60%;
+        --accent-foreground: 38 50% 15%;
 
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 40 30% 96%;
+        --destructive: 359 83% 63%;
+        --destructive-foreground: 0 0% 100%;
 
-        --border: 35 25% 85%;
-        --input: 35 25% 85%;
-        --ring: 350 45% 35%;
+        --border: 212 25% 88%;
+        --input: 212 25% 88%;
+        --ring: 359 65% 55%;
 
-        /* Envelope colors */
-        --envelope: 35 40% 85%;
-        --envelope-dark: 30 35% 70%;
-        --envelope-flap: 35 45% 80%;
-        --wax-seal: 350 50% 40%;
+        /* Envelope — blue-toned stationery */
+        --envelope: 212 34% 85%;
+        --envelope-dark: 212 30% 67%;
+        --envelope-flap: 212 34% 89%;
+        --wax-seal: 359 65% 55%;
     }
 
     .dark {
-        --background: 20 25% 12%;
-        --foreground: 40 30% 90%;
+        --palette-blue: 212 34% 82%;
+        --palette-olive: 59 46% 58%;
+        --palette-amber: 38 87% 60%;
+        --palette-coral: 359 65% 55%;
+        --palette-pink: 336 91% 69%;
 
-        --card: 20 25% 15%;
-        --card-foreground: 40 30% 90%;
+        --background: 212 25% 12%;
+        --foreground: 212 30% 90%;
 
-        --popover: 20 25% 15%;
-        --popover-foreground: 40 30% 90%;
+        --card: 212 25% 15%;
+        --card-foreground: 212 30% 90%;
 
-        --primary: 350 40% 50%;
-        --primary-foreground: 40 30% 96%;
+        --popover: 212 25% 15%;
+        --popover-foreground: 212 30% 90%;
 
-        --secondary: 140 15% 30%;
-        --secondary-foreground: 40 30% 90%;
+        --primary: 359 70% 65%;
+        --primary-foreground: 0 0% 100%;
 
-        --muted: 20 20% 20%;
-        --muted-foreground: 40 20% 60%;
+        --secondary: 212 25% 30%;
+        --secondary-foreground: 212 30% 90%;
 
-        --accent: 38 60% 45%;
-        --accent-foreground: 40 30% 96%;
+        --muted: 212 20% 20%;
+        --muted-foreground: 212 20% 60%;
 
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 40 30% 90%;
+        --accent: 38 87% 65%;
+        --accent-foreground: 0 0% 100%;
 
-        --border: 20 20% 25%;
-        --input: 20 20% 25%;
-        --ring: 350 40% 50%;
+        --destructive: 359 70% 50%;
+        --destructive-foreground: 0 0% 100%;
 
-        --envelope: 25 30% 25%;
-        --envelope-dark: 25 25% 20%;
-        --envelope-flap: 25 35% 30%;
-        --wax-seal: 350 45% 45%;
+        --border: 212 20% 25%;
+        --input: 212 20% 25%;
+        --ring: 359 70% 65%;
+
+        --envelope: 212 25% 25%;
+        --envelope-dark: 212 25% 20%;
+        --envelope-flap: 212 25% 30%;
+        --wax-seal: 359 65% 55%;
     }
 
     * {
@@ -173,12 +200,12 @@
         background:
             radial-gradient(
                 ellipse at 20% 30%,
-                hsl(40 30% 96% / 0.1) 0%,
+                hsl(var(--background) / 0.1) 0%,
                 transparent 50%
             ),
             radial-gradient(
                 ellipse at 80% 70%,
-                hsl(350 45% 35% / 0.05) 0%,
+                hsl(var(--primary) / 0.05) 0%,
                 transparent 50%
             );
         pointer-events: none;
@@ -187,9 +214,9 @@
     .text-gold-gradient {
         background: linear-gradient(
             135deg,
-            hsl(38 70% 50%),
-            hsl(45 80% 60%),
-            hsl(38 70% 50%)
+            hsl(var(--palette-amber)),
+            hsl(45 80% 68%),
+            hsl(var(--palette-amber))
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -248,5 +275,16 @@
 
     .font-body {
         font-family: var(--font-body);
+    }
+
+    .font-cinzel {
+        font-family: var(--font-cinzel);
+    }
+
+    .glass {
+        background: hsl(var(--card) / 0.3);
+        backdrop-filter: blur(4px) saturate(1.4);
+        /*-webkit-backdrop-filter: blur(24px) saturate(1.4);*/
+        border: 1px solid hsl(var(--palette-blue) / 0.25);
     }
 }

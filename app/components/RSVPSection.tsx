@@ -78,6 +78,11 @@ const RSVPSection = () => {
     <section
       id="rsvp-section"
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-blue))",
+        } as React.CSSProperties
+      }
     >
       {/* Background image */}
       <div
@@ -103,8 +108,14 @@ const RSVPSection = () => {
               transition={{ duration: 0.4 }}
               className="text-center"
             >
-              <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-accent/20 flex items-center justify-center">
-                <Heart className="w-12 h-12 text-accent" />
+              <div
+                className="w-24 h-24 mx-auto mb-8 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "hsl(var(--palette-blue) / 0.2)" }}
+              >
+                <Heart
+                  className="w-12 h-12"
+                  style={{ color: "hsl(var(--palette-blue))" }}
+                />
               </div>
               <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
                 Thank You!
@@ -128,9 +139,9 @@ const RSVPSection = () => {
                   whileTap={{ scale: 0.97 }}
                   className="flex items-center gap-2 px-6 py-3 rounded-full font-body text-sm font-medium transition-colors"
                   style={{
-                    backgroundColor: "hsl(var(--palette-amber) / 0.1)",
-                    color: "hsl(var(--palette-amber))",
-                    border: "1px solid hsl(var(--palette-amber) / 0.35)",
+                    backgroundColor: "hsl(var(--palette-blue) / 0.2)",
+                    color: "hsl(var(--palette-blue))",
+                    border: "1px solid hsl(var(--palette-blue) / 0.35)",
                   }}
                 >
                   <Check className="w-4 h-4" />
@@ -153,7 +164,7 @@ const RSVPSection = () => {
                   RSVP
                 </h2>
                 <div className="decorative-line mt-6 max-w-xs mx-auto">
-                  <span className="text-accent">✦</span>
+                  <span style={{ color: "hsl(var(--palette-blue))" }}>✦</span>
                 </div>
                 <p className="text-muted-foreground font-body text-lg mt-6">
                   Please RSVP by the 30th of April, 2026
@@ -423,7 +434,7 @@ const RSVPSection = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-primary text-primary-foreground font-display text-xl py-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
+                  className="w-full bg-palette-blue text-primary-foreground font-display text-xl py-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
                 >
                   <Check className="w-5 h-5" />
                   Send RSVP

@@ -1,290 +1,298 @@
 @import "tailwindcss";
 
 @theme inline {
-    /* Background & Foreground */
-    --color-background: hsl(var(--background));
-    --color-foreground: hsl(var(--foreground));
+  /* Background & Foreground */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-    /* Card */
-    --color-card: hsl(var(--card));
-    --color-card-foreground: hsl(var(--card-foreground));
+  /* Card */
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
 
-    /* Popover */
-    --color-popover: hsl(var(--popover));
-    --color-popover-foreground: hsl(var(--popover-foreground));
+  /* Popover */
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
 
-    /* Primary */
-    --color-primary: hsl(var(--primary));
-    --color-primary-foreground: hsl(var(--primary-foreground));
+  /* Primary */
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-    /* Secondary */
-    --color-secondary: hsl(var(--secondary));
-    --color-secondary-foreground: hsl(var(--secondary-foreground));
+  /* Secondary */
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-    /* Muted */
-    --color-muted: hsl(var(--muted));
-    --color-muted-foreground: hsl(var(--muted-foreground));
+  /* Muted */
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
-    /* Accent */
-    --color-accent: hsl(var(--accent));
-    --color-accent-foreground: hsl(var(--accent-foreground));
+  /* Accent */
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
 
-    /* Destructive */
-    --color-destructive: hsl(var(--destructive));
-    --color-destructive-foreground: hsl(var(--destructive-foreground));
+  /* Destructive */
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
 
-    /* Border / Input / Ring */
-    --color-border: hsl(var(--border));
-    --color-input: hsl(var(--input));
-    --color-ring: hsl(var(--ring));
+  /* Border / Input / Ring */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
 
-    /* Envelope theme */
-    --color-envelope: hsl(var(--envelope));
-    --color-envelope-dark: hsl(var(--envelope-dark));
-    --color-envelope-flap: hsl(var(--envelope-flap));
-    --color-wax-seal: hsl(var(--wax-seal));
+  /* Envelope theme */
+  --color-envelope: hsl(var(--envelope));
+  --color-envelope-dark: hsl(var(--envelope-dark));
+  --color-envelope-flap: hsl(var(--envelope-flap));
+  --color-wax-seal: hsl(var(--wax-seal));
 
-    /* Raw palette colours — use anywhere via var(--palette-*) */
-    --color-palette-blue: hsl(var(--palette-blue));
-    --color-palette-olive: hsl(var(--palette-olive));
-    --color-palette-amber: hsl(var(--palette-amber));
-    --color-palette-coral: hsl(var(--palette-coral));
-    --color-palette-pink: hsl(var(--palette-pink));
+  /* Raw palette colours — use anywhere via var(--palette-*) */
+  --color-palette-blue: hsl(var(--palette-blue));
+  --color-palette-olive: hsl(var(--palette-olive));
+  --color-palette-amber: hsl(var(--palette-amber));
+  --color-palette-coral: hsl(var(--palette-coral));
+  --color-palette-pink: hsl(var(--palette-pink));
 
-    /* Fonts — referencing Next.js font CSS variables */
-    --font-display: var(--font-playfair), "Playfair Display", serif;
-    --font-body: var(--font-cormorant), "Cormorant Garamond", serif;
-    --font-cinzel: var(--font-cinzel), "Cinzel", serif;
+  /* Fonts — referencing Next.js font CSS variables */
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-body: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-cinzel: var(--font-cinzel), "Cinzel", serif;
 
-    /* Border radius */
-    --radius: 0.5rem;
+  /* Border radius */
+  --radius: 0.5rem;
 }
 
 @layer base {
-    :root {
-        /* ── Raw palette ─────────────────────────────────────────
+  :root {
+    /* ── Raw palette ─────────────────────────────────────────
            #c0cfe0  blue
            #c5c463  olive
            #f2af3f  amber
            #ef5356  coral
            #f86aa4  pink
         ──────────────────────────────────────────────────────── */
-        --palette-blue: 212 34% 82%;
-        --palette-olive: 59 46% 58%;
-        --palette-amber: 38 87% 60%;
-        --palette-coral: 359 65% 55%;
-        --palette-pink: 336 91% 69%;
+    --palette-blue: 212 64% 70%;
+    /*--palette-blue: 212 80% 74%;*/
+    --palette-olive: 59 46% 58%;
+    --palette-amber: 38 87% 60%;
+    --palette-coral: 359 65% 55%;
+    --palette-pink: 336 91% 69%;
 
-        /* Background & Foreground */
-        --background: 212 30% 97%;
-        --foreground: 212 30% 15%;
+    /* Background & Foreground */
+    --background: 212 30% 97%;
+    --foreground: 212 30% 15%;
 
-        /* Card surfaces */
-        --card: 212 30% 99%;
-        --card-foreground: 212 30% 15%;
+    /* Card surfaces */
+    --card: 212 30% 99%;
+    --card-foreground: 212 30% 15%;
 
-        /* Popover */
-        --popover: 212 30% 99%;
-        --popover-foreground: 212 30% 15%;
+    /* Popover */
+    --popover: 212 30% 99%;
+    --popover-foreground: 212 30% 15%;
 
-        /* Primary — coral */
-        --primary: 359 65% 55%;
-        --primary-foreground: 0 0% 100%;
+    /* Primary — coral */
+    --primary: 359 65% 55%;
+    --primary-foreground: 0 0% 100%;
 
-        /* Secondary — blue */
-        --secondary: 212 34% 82%;
-        --secondary-foreground: 212 30% 20%;
+    /* Secondary — blue */
+    --secondary: 212 34% 82%;
+    --secondary-foreground: 212 30% 20%;
 
-        /* Muted */
-        --muted: 212 20% 92%;
-        --muted-foreground: 212 20% 48%;
+    /* Muted */
+    --muted: 212 20% 92%;
+    --muted-foreground: 212 20% 48%;
 
-        /* Accent — amber */
-        --accent: 38 87% 60%;
-        --accent-foreground: 38 50% 15%;
+    /* Accent — amber */
+    --accent: 38 87% 60%;
+    --accent-foreground: 38 50% 15%;
 
-        --destructive: 359 83% 63%;
-        --destructive-foreground: 0 0% 100%;
+    --destructive: 359 83% 63%;
+    --destructive-foreground: 0 0% 100%;
 
-        --border: 212 25% 88%;
-        --input: 212 25% 88%;
-        --ring: 359 65% 55%;
+    --border: 212 25% 88%;
+    --input: 212 25% 88%;
+    --ring: 359 65% 55%;
 
-        /* Envelope — blue-toned stationery */
-        --envelope: 212 34% 85%;
-        --envelope-dark: 212 30% 67%;
-        --envelope-flap: 212 34% 89%;
-        --wax-seal: 359 65% 55%;
-    }
+    /* Envelope — blue-toned stationery */
+    --envelope: 212 34% 85%;
+    --envelope-dark: 212 30% 67%;
+    --envelope-flap: 212 34% 89%;
+    --wax-seal: 359 65% 55%;
+  }
 
-    .dark {
-        --palette-blue: 212 34% 82%;
-        --palette-olive: 59 46% 58%;
-        --palette-amber: 38 87% 60%;
-        --palette-coral: 359 65% 55%;
-        --palette-pink: 336 91% 69%;
+  .dark {
+    --palette-blue: 212 34% 82%;
+    --palette-olive: 59 46% 58%;
+    --palette-amber: 38 87% 60%;
+    --palette-coral: 359 65% 55%;
+    --palette-pink: 336 91% 69%;
 
-        --background: 212 25% 12%;
-        --foreground: 212 30% 90%;
+    --background: 212 25% 12%;
+    --foreground: 212 30% 90%;
 
-        --card: 212 25% 15%;
-        --card-foreground: 212 30% 90%;
+    --card: 212 25% 15%;
+    --card-foreground: 212 30% 90%;
 
-        --popover: 212 25% 15%;
-        --popover-foreground: 212 30% 90%;
+    --popover: 212 25% 15%;
+    --popover-foreground: 212 30% 90%;
 
-        --primary: 359 70% 65%;
-        --primary-foreground: 0 0% 100%;
+    --primary: 359 70% 65%;
+    --primary-foreground: 0 0% 100%;
 
-        --secondary: 212 25% 30%;
-        --secondary-foreground: 212 30% 90%;
+    --secondary: 212 25% 30%;
+    --secondary-foreground: 212 30% 90%;
 
-        --muted: 212 20% 20%;
-        --muted-foreground: 212 20% 60%;
+    --muted: 212 20% 20%;
+    --muted-foreground: 212 20% 60%;
 
-        --accent: 38 87% 65%;
-        --accent-foreground: 0 0% 100%;
+    --accent: 38 87% 65%;
+    --accent-foreground: 0 0% 100%;
 
-        --destructive: 359 70% 50%;
-        --destructive-foreground: 0 0% 100%;
+    --destructive: 359 70% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-        --border: 212 20% 25%;
-        --input: 212 20% 25%;
-        --ring: 359 70% 65%;
+    --border: 212 20% 25%;
+    --input: 212 20% 25%;
+    --ring: 359 70% 65%;
 
-        --envelope: 212 25% 25%;
-        --envelope-dark: 212 25% 20%;
-        --envelope-flap: 212 25% 30%;
-        --wax-seal: 359 65% 55%;
-    }
+    --envelope: 212 25% 25%;
+    --envelope-dark: 212 25% 20%;
+    --envelope-flap: 212 25% 30%;
+    --wax-seal: 359 65% 55%;
+  }
 
-    * {
-        @apply border-border;
-    }
+  * {
+    @apply border-border;
+  }
 
-    html {
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-    }
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
 
-    body {
-        @apply bg-background text-foreground;
-        font-family: var(--font-body);
-    }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--font-display);
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
 }
 
 @layer components {
-    .snap-section {
-        @apply min-h-screen w-full;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-    }
+  .snap-section {
+    @apply min-h-screen w-full;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 
-    .oil-paint-overlay {
-        position: relative;
-    }
+  .oil-paint-overlay {
+    position: relative;
+  }
 
-    .oil-paint-overlay::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(
-                ellipse at 20% 30%,
-                hsl(var(--background) / 0.1) 0%,
-                transparent 50%
-            ),
-            radial-gradient(
-                ellipse at 80% 70%,
-                hsl(var(--primary) / 0.05) 0%,
-                transparent 50%
-            );
-        pointer-events: none;
-    }
+  .oil-paint-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at 20% 30%,
+        hsl(var(--background) / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 70%,
+        hsl(var(--primary) / 0.05) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
 
-    .text-gold-gradient {
-        background: linear-gradient(
-            135deg,
-            hsl(var(--palette-amber)),
-            hsl(45 80% 68%),
-            hsl(var(--palette-amber))
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+  .text-gold-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--palette-amber)),
+      hsl(45 80% 68%),
+      hsl(var(--palette-amber))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-    .border-ornate {
-        border: 2px solid hsl(var(--accent));
-        position: relative;
-    }
+  .border-ornate {
+    border: 2px solid hsl(var(--accent));
+    position: relative;
+  }
 
-    .border-ornate::before,
-    .border-ornate::after {
-        content: "✦";
-        position: absolute;
-        color: hsl(var(--accent));
-        font-size: 1rem;
-    }
+  .border-ornate::before,
+  .border-ornate::after {
+    content: "✦";
+    position: absolute;
+    color: hsl(var(--accent));
+    font-size: 1rem;
+  }
 
-    .border-ornate::before {
-        top: -0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  .border-ornate::before {
+    top: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-    .border-ornate::after {
-        bottom: -0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  .border-ornate::after {
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-    .decorative-line {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+  .decorative-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    .decorative-line::before,
-    .decorative-line::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            hsl(var(--accent)),
-            transparent
-        );
-    }
+  .decorative-line::before,
+  .decorative-line::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--section-accent, hsl(var(--accent))),
+      transparent
+    );
+  }
 }
 
 @layer utilities {
-    .font-display {
-        font-family: var(--font-display);
-    }
+  .font-display {
+    font-family: var(--font-display);
+  }
 
-    .font-body {
-        font-family: var(--font-body);
-    }
+  .font-body {
+    font-family: var(--font-body);
+  }
 
-    .font-cinzel {
-        font-family: var(--font-cinzel);
-    }
+  .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
 
-    .glass {
-        background: hsl(var(--card) / 0.3);
-        backdrop-filter: blur(4px) saturate(1.4);
-        /*-webkit-backdrop-filter: blur(24px) saturate(1.4);*/
-        border: 1px solid hsl(var(--palette-blue) / 0.25);
-    }
+  .glass {
+    background: hsl(var(--card) / 0.3);
+    backdrop-filter: blur(4px) saturate(1.4);
+    /*-webkit-backdrop-filter: blur(24px) saturate(1.4);*/
+    border: 1px solid hsl(var(--palette-blue) / 0.25);
+  }
+
+  .morph {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(4px) saturate(1.4);
+    /*-webkit-backdrop-filter: blur(24px) saturate(1.4);*/
+    border: 1px solid hsl(var(--palette-blue) / 0.25);
+  }
 }

@@ -5,7 +5,14 @@ import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-4 bg-muted/50">
+    <footer
+      className="py-12 px-4 bg-muted/50"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-amber))",
+        } as React.CSSProperties
+      }
+    >
       <div className="container max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,14 +21,20 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-            Heinrich & Tamryn
+            Heinrich &amp; Tamryn
           </h2>
-          <p className="text-accent font-body text-xl mb-6">
+          <p
+            className="font-body text-xl mb-6"
+            style={{ color: "hsl(var(--palette-amber))" }}
+          >
             12 September, 2026
           </p>
 
           <div className="decorative-line max-w-xs mx-auto mb-8">
-            <Heart className="w-5 h-5 text-accent" />
+            <Heart
+              className="w-5 h-5"
+              style={{ color: "hsl(var(--palette-amber))" }}
+            />
           </div>
 
           <p className="text-muted-foreground font-body text-lg max-w-lg mx-auto mb-8">

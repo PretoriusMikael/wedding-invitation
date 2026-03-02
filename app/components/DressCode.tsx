@@ -76,7 +76,14 @@ const gentlemen = [
 
 const DressCode = () => {
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/20">
+    <section
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/20"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-amber))",
+        } as React.CSSProperties
+      }
+    >
       {/* Background image */}
       <div className="absolute top-0 right-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
@@ -100,7 +107,7 @@ const DressCode = () => {
           className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full opacity-10"
           style={{
             background:
-              "radial-gradient(circle, hsl(var(--palette-olive)) 0%, transparent 70%)",
+              "radial-gradient(circle, hsl(var(--palette-blue)) 0%, transparent 70%)",
           }}
         />
         <div
@@ -125,7 +132,7 @@ const DressCode = () => {
             Dress Code
           </h2>
           <div className="decorative-line mt-5 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-amber))" }}>✦</span>
           </div>
 
           {/* Theme badge */}
@@ -136,13 +143,13 @@ const DressCode = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-3 mt-8 px-8 py-3 rounded-full border"
             style={{
-              borderColor: "hsl(var(--palette-amber) / 0.4)",
+              borderColor: "hsl(var(--palette-amber) / 0.5)",
               backgroundColor: "hsl(var(--palette-amber) / 0.07)",
             }}
           >
             <Flower
               className="w-5 h-5"
-              style={{ color: "hsl(var(--palette-olive))" }}
+              style={{ color: "hsl(var(--palette-pink))" }}
             />
             <span
               className="font-display text-xl md:text-2xl tracking-wide"
@@ -152,7 +159,7 @@ const DressCode = () => {
             </span>
             <Flower
               className="w-5 h-5"
-              style={{ color: "hsl(var(--palette-olive))" }}
+              style={{ color: "hsl(var(--palette-blue))" }}
             />
           </motion.div>
         </motion.div>
@@ -208,7 +215,7 @@ const DressCode = () => {
             <div className="decorative-line mb-6 max-w-30 mx-auto">
               <span
                 style={{
-                  color: "hsl(var(--palette-amber))",
+                  color: "hsl(var(--palette-pink))",
                   fontSize: "0.8rem",
                 }}
               >
@@ -228,7 +235,7 @@ const DressCode = () => {
                 >
                   <span
                     className="w-1.5 h-1.5 rounded-full shrink-0 inline-block"
-                    style={{ backgroundColor: "hsl(var(--palette-amber))" }}
+                    style={{ backgroundColor: "hsl(var(--palette-pink))" }}
                   />
                   <span
                     className="font-body text-base md:text-lg"
@@ -256,28 +263,28 @@ const DressCode = () => {
             {/* Soft corner accent */}
             <div
               className="absolute top-0 left-0 w-24 h-24 opacity-20 rounded-br-full"
-              style={{ backgroundColor: "hsl(var(--palette-olive))" }}
+              style={{ backgroundColor: "hsl(var(--palette-blue))" }}
             />
 
             <div
               className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: "hsl(var(--palette-olive) / 0.1)" }}
+              style={{ backgroundColor: "hsl(var(--palette-blue) / 0.1)" }}
             >
               <BowTieIcon
                 className="w-8 h-8"
-                style={{ color: "hsl(var(--palette-olive))" }}
+                style={{ color: "hsl(var(--palette-blue))" }}
               />
             </div>
             <h3
               className="font-display text-2xl md:text-3xl mb-2"
-              style={{ color: "hsl(var(--palette-olive))" }}
+              style={{ color: "hsl(var(--palette-blue))" }}
             >
               Gentlemen
             </h3>
             <div className="decorative-line mb-6 max-w-30 mx-auto">
               <span
                 style={{
-                  color: "hsl(var(--palette-amber))",
+                  color: "hsl(var(--palette-blue))",
                   fontSize: "0.8rem",
                 }}
               >
@@ -297,7 +304,7 @@ const DressCode = () => {
                 >
                   <span
                     className="w-1.5 h-1.5 rounded-full shrink-0 inline-block"
-                    style={{ backgroundColor: "hsl(var(--palette-amber))" }}
+                    style={{ backgroundColor: "hsl(var(--palette-blue))" }}
                   />
                   <span
                     className="font-body text-base md:text-lg"

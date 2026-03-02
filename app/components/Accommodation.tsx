@@ -102,7 +102,7 @@ const AccommodationItem = ({
     style={{ borderColor: "hsl(var(--border))" }}
   >
     <div className="flex items-center gap-3">
-      <span style={{ color: "hsl(var(--palette-amber))" }} className="text-sm">
+      <span style={{ color: "hsl(var(--palette-olive))" }} className="text-sm">
         ✦
       </span>
       {href ? (
@@ -128,8 +128,8 @@ const AccommodationItem = ({
       <span
         className="font-body text-sm shrink-0 px-3 py-1 rounded-full"
         style={{
-          color: "hsl(var(--palette-amber))",
-          backgroundColor: "hsl(var(--palette-amber) / 0.1)",
+          color: "hsl(var(--palette-olive))",
+          backgroundColor: "hsl(var(--palette-olive) / 0.1)",
         }}
       >
         {distance}
@@ -208,6 +208,11 @@ const Accommodation = () => {
     <section
       id="accommodation-section"
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-olive))",
+        } as React.CSSProperties
+      }
     >
       <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
@@ -248,7 +253,7 @@ const Accommodation = () => {
             Accommodation
           </h2>
           <div className="decorative-line mt-5 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-olive))" }}>✦</span>
           </div>
         </motion.div>
 
@@ -277,9 +282,9 @@ const Accommodation = () => {
           <div
             className="flex items-center gap-2 px-5 py-2 rounded-full border font-body text-sm underline hover:cursor-pointer"
             style={{
-              borderColor: "hsl(var(--palette-amber) / 0.35)",
+              borderColor: "hsl(var(--palette-olive) / 0.35)",
               color: "hsl(var(--muted-foreground))",
-              backgroundColor: "hsl(var(--palette-amber) / 0.06)",
+              backgroundColor: "hsl(var(--palette-olive) / 0.06)",
             }}
             onClick={() => {
               const venueSection = document.getElementById("venue-section");
@@ -290,7 +295,7 @@ const Accommodation = () => {
           >
             <MapPin
               className="w-4 h-4"
-              style={{ color: "hsl(var(--palette-amber))" }}
+              style={{ color: "hsl(var(--palette-olive))" }}
             />
             DuVon Wine &amp; Wedding Estate, Robertson
           </div>
@@ -327,10 +332,10 @@ const Accommodation = () => {
             icon={
               <Route
                 className="w-6 h-6"
-                style={{ color: "hsl(var(--palette-pink))" }}
+                style={{ color: "hsl(var(--palette-olive))" }}
               />
             }
-            iconBg="hsl(var(--palette-pink) / 0.15)"
+            iconBg="hsl(var(--palette-olive) / 0.15)"
             title="A Little Further Away"
             subtitle="12 – 15 km from the venue"
             delay={0.2}

@@ -75,8 +75,8 @@ const FAQItem = ({
           className="font-display text-lg shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm"
           style={{
             backgroundColor: isOpen
-              ? "hsl(var(--palette-coral))"
-              : "hsl(var(--palette-amber) / 0.12)",
+              ? "hsl(var(--palette-olive))"
+              : "hsl(var(--palette-amber) / 0.15)",
             color: isOpen
               ? "hsl(var(--primary-foreground))"
               : "hsl(var(--palette-amber))",
@@ -89,7 +89,7 @@ const FAQItem = ({
           className="font-display text-lg md:text-xl"
           style={{
             color: isOpen
-              ? "hsl(var(--palette-coral))"
+              ? "hsl(var(--palette-olive))"
               : "hsl(var(--foreground))",
             transition: "color 0.3s ease",
           }}
@@ -104,14 +104,14 @@ const FAQItem = ({
         className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
         style={{
           backgroundColor: isOpen
-            ? "hsl(var(--palette-coral) / 0.1)"
-            : "hsl(var(--palette-amber) / 0.1)",
+            ? "hsl(var(--palette-olive) / 0.1)"
+            : "hsl(var(--palette-amber) / 0.12)",
         }}
       >
         {isOpen ? (
           <Minus
             className="w-4 h-4"
-            style={{ color: "hsl(var(--palette-coral))" }}
+            style={{ color: "hsl(var(--palette-olive))" }}
           />
         ) : (
           <Plus
@@ -160,14 +160,21 @@ const FAQ = () => {
   };
 
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/20">
+    <section
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/20"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-amber))",
+        } as React.CSSProperties
+      }
+    >
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-16 -left-16 w-72 h-72 rounded-full opacity-10"
           style={{
             background:
-              "radial-gradient(circle, hsl(var(--palette-coral)) 0%, transparent 70%)",
+              "radial-gradient(circle, hsl(var(--palette-amber)) 0%, transparent 70%)",
           }}
         />
         <div
@@ -198,7 +205,7 @@ const FAQ = () => {
             FAQ&apos;s
           </h2>
           <div className="decorative-line mt-5 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-amber))" }}>✦</span>
           </div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -244,7 +251,7 @@ const FAQ = () => {
             <a
               href="mailto:swanepoel.hm@gmail.com"
               className="underline underline-offset-4"
-              style={{ color: "hsl(var(--palette-coral))" }}
+              style={{ color: "hsl(var(--palette-olive))" }}
             >
               swanepoel.hm@gmail.com
             </a>

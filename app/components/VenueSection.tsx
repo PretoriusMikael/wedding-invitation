@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Car, Plane, House } from "lucide-react";
+import { MapPin, Car, House } from "lucide-react";
 import venueImage from "@/app/assets/duvon-directions.jpeg";
 import reception from "@/app/assets/reception-blurred.jpeg";
 import Image from "next/image";
@@ -11,6 +11,11 @@ const VenueSection = () => {
     <section
       id="venue-section"
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-blue))",
+        } as React.CSSProperties
+      }
     >
       <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
@@ -28,14 +33,11 @@ const VenueSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
-            Where Dreams Come True
-          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             The Venue
           </h2>
           <div className="decorative-line mt-6 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-blue))" }}>✦</span>
           </div>
         </motion.div>
 
@@ -55,7 +57,10 @@ const VenueSection = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-            <div className="absolute -inset-4 border-2 border-accent/30 rounded-lg -z-10" />
+            <div
+              className="absolute -inset-4 border-2 rounded-lg -z-10"
+              style={{ borderColor: "hsl(var(--palette-blue) / 0.3)" }}
+            />
           </motion.div>
 
           {/* Details */}
@@ -80,8 +85,16 @@ const VenueSection = () => {
 
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-accent" />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{
+                    backgroundColor: "hsl(var(--palette-blue) / 0.12)",
+                  }}
+                >
+                  <MapPin
+                    className="w-5 h-5"
+                    style={{ color: "hsl(var(--palette-blue))" }}
+                  />
                 </div>
                 <div>
                   <h4 className="font-display text-lg text-foreground">
@@ -96,8 +109,16 @@ const VenueSection = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                  <Car className="w-5 h-5 text-accent" />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{
+                    backgroundColor: "hsl(var(--palette-blue) / 0.12)",
+                  }}
+                >
+                  <Car
+                    className="w-5 h-5"
+                    style={{ color: "hsl(var(--palette-blue))" }}
+                  />
                 </div>
                 <div>
                   <h4 className="font-display text-lg text-foreground">
@@ -110,8 +131,16 @@ const VenueSection = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                  <House className="w-5 h-5 text-accent" />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                  style={{
+                    backgroundColor: "hsl(var(--palette-blue) / 0.12)",
+                  }}
+                >
+                  <House
+                    className="w-5 h-5"
+                    style={{ color: "hsl(var(--palette-blue))" }}
+                  />
                 </div>
                 <div>
                   <h4
@@ -142,7 +171,7 @@ const VenueSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-block bg-primary text-primary-foreground font-body text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="inline-block bg-palette-blue text-primary-foreground font-body text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               Get Directions
             </motion.a>

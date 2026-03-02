@@ -1,10 +1,17 @@
 "use client";
 
-import couplePhoto from "@/app/assets/bride-walking.png";
+import couplePhoto from "@/app/assets/reception-blurred.jpeg";
 
 const InvitationLetter = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+    <section
+      className="relative min-h-screen flex items-center justify-center px-4 py-20"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-amber))",
+        } as React.CSSProperties
+      }
+    >
       {/* Background image */}
       <div
         className="absolute inset-0"
@@ -28,7 +35,7 @@ const InvitationLetter = () => {
       {/* Content */}
       <div className="relative z-10 w-full max-w-xs sm:max-w-sm md:max-w-md">
         <div
-          className="glass rounded-lg text-center px-8 py-10 md:px-12 md:py-14"
+          className="morph rounded-lg text-center px-8 py-10 md:px-12 md:py-14"
           style={{
             boxShadow:
               "0 24px 80px hsl(var(--foreground) / 0.22), 0 4px 16px hsl(var(--foreground) / 0.1)",
@@ -74,7 +81,7 @@ const InvitationLetter = () => {
             <div className="decorative-line w-40">
               <span
                 style={{
-                  color: "hsl(var(--palette-pink))",
+                  color: "hsl(var(--palette-amber))",
                   fontSize: "1.1rem",
                 }}
               >

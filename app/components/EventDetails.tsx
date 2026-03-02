@@ -26,7 +26,14 @@ const EventDetails = () => {
   ];
 
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30">
+    <section
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/30"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-olive))",
+        } as React.CSSProperties
+      }
+    >
       {/* Decorative Background Image */}
       <div className="absolute top-0 right-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
@@ -52,7 +59,7 @@ const EventDetails = () => {
             Wedding Details
           </h2>
           <div className="decorative-line mt-6 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span className="text-palette-olive">✦</span>
           </div>
         </motion.div>
 
@@ -64,10 +71,10 @@ const EventDetails = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="glass rounded-lg p-8 text-center shadow-lg border-2 border-accent/30"
+              className="glass rounded-lg p-8 text-center shadow-lg border-2 border-palette-olive/30"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
-                <detail.icon className="w-8 h-8 text-accent" />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-palette-olive/10 flex items-center justify-center">
+                <detail.icon className="w-8 h-8 text-palette-olive" />
               </div>
               <h3 className="font-display text-2xl text-foreground mb-4">
                 {detail.title}

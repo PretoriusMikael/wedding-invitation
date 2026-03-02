@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import reception from "@/app/assets/reception-blurred.jpeg";
+import reception from "@/app/assets/bride-walking.png";
 import Image from "next/image";
 
 interface TimeUnit {
@@ -49,10 +49,11 @@ function CountUnit({ value, label, index }: CountUnitProps) {
     >
       {/* Card */}
       <div
-        className="glass relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg flex items-center justify-center border-2 border-accent/30"
+        className="glass relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-lg flex items-center justify-center border-2"
         style={{
           boxShadow:
             "0 8px 32px hsl(var(--foreground) / 0.12), 0 2px 8px hsl(var(--foreground) / 0.08)",
+          borderColor: "hsl(var(--palette-pink) / 0.35)",
         }}
       >
         {/* Subtle top-to-bottom gradient split */}
@@ -132,7 +133,14 @@ const Countdown = () => {
     units[3].value === 0;
 
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden">
+    <section
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-pink))",
+        } as React.CSSProperties
+      }
+    >
       {/* Soft radial background accent */}
       <div className="absolute top-0 right-0 w-full h-full opacity-40">
         <Image
@@ -146,7 +154,7 @@ const Countdown = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--palette-amber) / 0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--palette-pink) / 0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -163,7 +171,7 @@ const Countdown = () => {
             {isOver ? "The Day Is Here!" : "Counting Down"}
           </h2>
           <div className="decorative-line mt-6 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-pink))" }}>✦</span>
           </div>
           {!isOver && (
             <motion.p
@@ -215,7 +223,7 @@ const Countdown = () => {
           >
             <p
               className="font-display text-3xl md:text-5xl"
-              style={{ color: "hsl(var(--palette-amber))" }}
+              style={{ color: "hsl(var(--palette-pink))" }}
             >
               Today we celebrate love ♥
             </p>
@@ -231,7 +239,12 @@ const Countdown = () => {
           className="mt-14 flex justify-center"
         >
           <div className="decorative-line w-64">
-            <span className="text-accent text-lg">♥</span>
+            <span
+              style={{ color: "hsl(var(--palette-pink))" }}
+              className="text-lg"
+            >
+              ♥
+            </span>
           </div>
         </motion.div>
       </div>

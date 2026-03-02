@@ -10,13 +10,13 @@ const OurStory = () => {
       year: "2019",
       title: "First Meeting",
       description:
-        "We first met in 2018 at the Lourensford Market in Somerset West. Heinrich was working there that day, while Tamryn was enjoying the market with friends. One of her friends knew Heinrich from university and introduced us. A simple hello quickly turned into a flowing conversation, and Tamryn found herself returning to the same stall again and again. Eventually, she gathered the courage to ask for Heinrich’s number and just like that, our story really began.",
+        "We first met in 2018 at the Lourensford Market in Somerset West. Heinrich was working there that day, while Tamryn was enjoying the market with friends. One of her friends knew Heinrich from university and introduced us. A simple hello quickly turned into a flowing conversation, and Tamryn found herself returning to the same stall again and again. Eventually, she gathered the courage to ask for Heinrich's number and just like that, our story really began.",
     },
     {
       year: "2020",
       title: "An Impression That Lasted",
       description:
-        "As we spent more time together and shared our pasts, we realized our paths had crossed long before that day at the market. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn’t speak that evening, the moment left a quiet impression that stayed with him.",
+        "As we spent more time together and shared our pasts, we realized our paths had crossed long before that day at the market. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn't speak that evening, the moment left a quiet impression that stayed with him.",
     },
     {
       year: "2022",
@@ -28,7 +28,7 @@ const OurStory = () => {
       year: "2024",
       title: "Guided by Grace",
       description:
-        "Looking back, these moments no longer feel like coincidences, but rather gentle reminders of the Lord’s hand guiding our lives and leading us toward one another long before we knew it. With grateful hearts, we are so excited to say “I do” and celebrate the forever He has been preparing for us all along.",
+        "Looking back, these moments no longer feel like coincidences, but rather gentle reminders of the Lord's hand guiding our lives and leading us toward one another long before we knew it. With grateful hearts, we are so excited to say 'I do' and celebrate the forever He has been preparing for us all along.",
     },
     {
       year: "2026",
@@ -39,7 +39,14 @@ const OurStory = () => {
   ];
 
   return (
-    <section className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden">
+    <section
+      className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
+      style={
+        {
+          "--section-accent": "hsl(var(--palette-pink))",
+        } as React.CSSProperties
+      }
+    >
       {/* Decorative Background Image */}
       <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
         <Image
@@ -57,20 +64,20 @@ const OurStory = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
-            How It All Began
-          </p>*/}
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Our Love Story
           </h2>
           <div className="decorative-line mt-6 max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+            <span style={{ color: "hsl(var(--palette-pink))" }}>✦</span>
           </div>
         </motion.div>
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-accent/30 -translate-x-1/2 hidden md:block" />
+          <div
+            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
+            style={{ backgroundColor: "hsl(var(--palette-pink) / 0.3)" }}
+          />
 
           {timeline.map((item, index) => (
             <motion.div
@@ -88,9 +95,6 @@ const OurStory = () => {
                 className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
               >
                 <div className="glass p-6 rounded-lg shadow-lg">
-                  {/*<span className="text-accent font-display text-2xl">
-                    {item.year}
-                  </span>*/}
                   <h3 className="font-display text-xl text-foreground mt-2 mb-2">
                     {item.title}
                   </h3>
@@ -101,7 +105,10 @@ const OurStory = () => {
               </div>
 
               {/* Timeline Dot */}
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-background shadow-lg" />
+              <div
+                className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background shadow-lg"
+                style={{ backgroundColor: "hsl(var(--palette-pink))" }}
+              />
 
               {/* Spacer for other side */}
               <div className="hidden md:block flex-1" />

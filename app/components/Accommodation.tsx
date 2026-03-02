@@ -284,7 +284,7 @@ const Accommodation = () => {
             style={{
               borderColor: "hsl(var(--palette-olive) / 0.35)",
               color: "hsl(var(--muted-foreground))",
-              backgroundColor: "hsl(var(--palette-olive) / 0.06)",
+              backgroundColor: "hsl(var(--palette-olive) / 0.3)",
             }}
             onClick={() => {
               const venueSection = document.getElementById("venue-section");
@@ -357,10 +357,10 @@ const Accommodation = () => {
           icon={
             <Hotel
               className="w-6 h-6"
-              style={{ color: "hsl(var(--palette-amber))" }}
+              style={{ color: "hsl(var(--palette-olive))" }}
             />
           }
-          iconBg="hsl(var(--palette-amber) / 0.15)"
+          iconBg="hsl(var(--palette-olive) / 0.15)"
           title="Silverstrand & Surrounding Lodges"
           subtitle="Approx. 10 km from the venue"
           delay={0.3}

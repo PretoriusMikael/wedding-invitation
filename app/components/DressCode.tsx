@@ -80,7 +80,7 @@ const DressCode = () => {
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden bg-muted/20"
       style={
         {
-          "--section-accent": "hsl(var(--palette-amber))",
+          "--section-accent": "hsl(var(--palette-pink))",
         } as React.CSSProperties
       }
     >
@@ -94,13 +94,22 @@ const DressCode = () => {
         <div className="absolute inset-0 bg-linear-to-l from-transparent to-background" />
       </div>
 
+      {/* Pink-to-blue gradient wash across the section */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, hsl(var(--palette-pink) / 0.06) 0%, transparent 50%, hsl(var(--palette-blue) / 0.06) 100%)",
+        }}
+      />
+
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute -top-16 -left-16 w-72 h-72 rounded-full opacity-10"
           style={{
             background:
-              "radial-gradient(circle, hsl(var(--palette-amber)) 0%, transparent 70%)",
+              "radial-gradient(circle, hsl(var(--palette-pink)) 0%, transparent 70%)",
           }}
         />
         <div
@@ -108,13 +117,6 @@ const DressCode = () => {
           style={{
             background:
               "radial-gradient(circle, hsl(var(--palette-blue)) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(var(--palette-coral)) 0%, transparent 70%)",
           }}
         />
       </div>
@@ -131,8 +133,32 @@ const DressCode = () => {
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Dress Code
           </h2>
-          <div className="decorative-line mt-5 max-w-xs mx-auto">
-            <span style={{ color: "hsl(var(--palette-amber))" }}>✦</span>
+          {/* Pink-to-blue gradient decorative line */}
+          <div className="flex items-center gap-4 mt-5 max-w-xs mx-auto">
+            <div
+              className="flex-1 h-px"
+              style={{
+                background:
+                  "linear-gradient(to right, transparent, hsl(var(--palette-pink)))",
+              }}
+            />
+            <span
+              style={{
+                background: `linear-gradient(to right, hsl(var(--palette-pink)), hsl(var(--palette-blue)))`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              ✦
+            </span>
+            <div
+              className="flex-1 h-px"
+              style={{
+                background:
+                  "linear-gradient(to right, hsl(var(--palette-blue)), transparent)",
+              }}
+            />
           </div>
 
           {/* Theme badge */}
@@ -143,8 +169,11 @@ const DressCode = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-3 mt-8 px-8 py-3 rounded-full border"
             style={{
-              borderColor: "hsl(var(--palette-amber) / 0.5)",
-              backgroundColor: "hsl(var(--palette-amber) / 0.07)",
+              borderColor: "transparent",
+              backgroundImage: `linear-gradient(hsl(var(--background) / 0.01), hsl(var(--background) / 0.01)), linear-gradient(to right, hsl(var(--palette-pink) / 0.3), hsl(var(--palette-blue) / 0.3))`,
+              backgroundOrigin: "border-box",
+              backgroundClip: "padding-box, border-box",
+              backgroundColor: "hsl(var(--palette-pink) / 0.04)",
             }}
           >
             <Flower
@@ -153,7 +182,12 @@ const DressCode = () => {
             />
             <span
               className="font-display text-xl md:text-2xl tracking-wide"
-              style={{ color: "hsl(var(--foreground))" }}
+              style={{
+                backgroundImage: `linear-gradient(to right, hsl(var(--palette-pink)), hsl(var(--palette-blue)))`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               Semi-Formal Garden Chic
             </span>
@@ -185,8 +219,13 @@ const DressCode = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             viewport={{ once: true }}
-            className="glass rounded-2xl p-8 md:p-10 text-center relative overflow-hidden border-2 border-accent/30"
+            className="rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
             style={{
+              background: "hsl(var(--card) / 0.3)",
+              backdropFilter: "blur(4px) saturate(1.4)",
+              WebkitBackdropFilter: "blur(24px) saturate(1.4)",
+              border:
+                "1px solid color-mix(in srgb, hsl(var(--palette-pink)) 30%, transparent)",
               boxShadow:
                 "0 8px 40px hsl(var(--foreground) / 0.08), 0 2px 8px hsl(var(--foreground) / 0.05)",
             }}
@@ -254,8 +293,13 @@ const DressCode = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
-            className="glass rounded-2xl p-8 md:p-10 text-center relative overflow-hidden border-2 border-accent/30"
+            className="rounded-2xl p-8 md:p-10 text-center relative overflow-hidden"
             style={{
+              background: "hsl(var(--card) / 0.3)",
+              backdropFilter: "blur(4px) saturate(1.4)",
+              WebkitBackdropFilter: "blur(24px) saturate(1.4)",
+              border:
+                "1px solid color-mix(in srgb, hsl(var(--palette-blue)) 30%, transparent)",
               boxShadow:
                 "0 8px 40px hsl(var(--foreground) / 0.08), 0 2px 8px hsl(var(--foreground) / 0.05)",
             }}

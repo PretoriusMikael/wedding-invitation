@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Car, House } from "lucide-react";
 import venueImage from "@/app/assets/duvon-directions.jpeg";
-import reception from "@/app/assets/reception-blurred.jpeg";
+import reception from "@/app/assets/patio.jpeg";
 import Image from "next/image";
 
 const VenueSection = () => {
@@ -21,7 +21,7 @@ const VenueSection = () => {
         <Image
           src={reception}
           alt=""
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-[right_25%_top_0]"
         />
         <div className="absolute inset-0 bg-linear-to-r from-transparent to-background" />
       </div>

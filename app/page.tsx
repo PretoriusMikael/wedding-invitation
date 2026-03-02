@@ -24,8 +24,8 @@ export default function Home() {
       <DressCode />
       <Accommodation />
       <Countdown />
-      <FAQ />
       <RSVPSection />
+      <FAQ />
       <Footer />
     </main>
   );

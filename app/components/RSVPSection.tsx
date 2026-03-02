@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Heart, Music, Plus, X } from "lucide-react";
 import { useToast } from "@/app/hooks/use-toast";
-import reception from "@/app/assets/three-in-one.jpeg";
+import reception from "@/app/assets/arch.jpeg";
 import Image from "next/image";
 
 const RSVPSection = () => {
@@ -85,16 +85,48 @@ const RSVPSection = () => {
       }
     >
       {/* Background image */}
-      <div
-        className={`absolute top-0 right-0 h-full opacity-30 sm:opacity-20 ${isSubmitted ? "w-full" : "w-full sm:w-1/3"}`}
-      >
+      {/* Background image — always present, full bleed on submit */}
+      <div className="absolute top-0 right-0 h-full w-full sm:w-1/3">
         <Image
           src={reception}
           alt=""
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-top opacity-20"
         />
-        <div className="absolute inset-0 bg-linear-to-l from-transparent to-background" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to left, transparent 0%, hsl(var(--background) / 0.6) 50%, hsl(var(--background)) 100%)",
+          }}
+        />
       </div>
+
+      {/* Full-bleed photo revealed only after submit */}
+      <AnimatePresence>
+        {isSubmitted && (
+          <motion.div
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+          >
+            <Image
+              src={reception}
+              alt=""
+              className="w-full h-full object-cover object-top"
+            />
+            {/* Light vignette so text stays readable */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, hsl(var(--background) / 0.35) 0%, transparent 40%, transparent 60%, hsl(var(--background) / 0.35) 100%)",
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="container max-w-2xl relative z-10">
         <AnimatePresence mode="wait">
@@ -106,23 +138,25 @@ const RSVPSection = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4 }}
-              className="text-center"
+              className="morph rounded-lg text-center px-8 py-10 md:px-12 md:py-14"
             >
               <div
                 className="w-24 h-24 mx-auto mb-8 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "hsl(var(--palette-blue) / 0.2)" }}
+                style={{ backgroundColor: "hsl(var(--palette-pink) / 0.2)" }}
               >
                 <Heart
                   className="w-12 h-12"
-                  style={{ color: "hsl(var(--palette-blue))" }}
+                  style={{ color: "hsl(var(--palette-pink))" }}
                 />
               </div>
               <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">
                 Thank You!
               </h2>
               <p className="text-muted-foreground font-body text-xl max-w-md mx-auto">
-                Your RSVP has been received. We are so excited to celebrate our
-                special day with you!
+                Your RSVP has been received.
+                {formData.attending === "yes"
+                  ? " We are so excited to celebrate our special day with you!"
+                  : " We are sorry to hear that you can't make it."}
               </p>
 
               <div className="mt-10 flex flex-col items-center gap-3">
@@ -229,7 +263,7 @@ const RSVPSection = () => {
                         required
                         checked={formData.attending === "yes"}
                         onChange={handleChange}
-                        className="w-4 h-4 accent-accent"
+                        className="w-4 h-4 accent-palette-blue"
                       />
                       <span className="font-body text-foreground">
                         Joyfully Accept
@@ -242,7 +276,7 @@ const RSVPSection = () => {
                         value="no"
                         checked={formData.attending === "no"}
                         onChange={handleChange}
-                        className="w-4 h-4 accent-accent"
+                        className="w-4 h-4 accent-palette-blue"
                       />
                       <span className="font-body text-foreground">
                         Regretfully Decline
@@ -262,7 +296,7 @@ const RSVPSection = () => {
                       className="space-y-6 overflow-hidden"
                     >
                       {/* Dietary */}
-                      <div>
+                      <div className="p-2">
                         <label
                           htmlFor="dietary"
                           className="block font-body text-foreground mb-2"
@@ -281,7 +315,7 @@ const RSVPSection = () => {
                       </div>
 
                       {/* Song recommendations */}
-                      <div>
+                      <div className="p-2">
                         <label
                           htmlFor="song"
                           className="block font-body text-foreground mb-1"

@@ -77,19 +77,6 @@ const InvitationLetter = () => {
             Tamryn
           </h1>
 
-          <div className="flex justify-center my-6">
-            <div className="decorative-line w-40">
-              <span
-                style={{
-                  color: "hsl(var(--palette-amber))",
-                  fontSize: "1.1rem",
-                }}
-              >
-                ♥
-              </span>
-            </div>
-          </div>
-
           <p
             className="font-body text-lg md:text-xl mb-1"
             style={{ color: "hsl(var(--muted-foreground))" }}
@@ -103,10 +90,16 @@ const InvitationLetter = () => {
             DuVon Wine and Wedding Estate, Robertson
           </p>
 
-          {/* Bottom ornament */}
-          <div className="flex justify-center mt-6">
-            <div className="decorative-line w-32">
-              <span style={{ color: "hsl(var(--palette-amber))" }}>✦</span>
+          <div className="flex justify-center my-6">
+            <div className="decorative-line w-40">
+              <span
+                style={{
+                  color: "hsl(var(--palette-amber))",
+                  fontSize: "1.1rem",
+                }}
+              >
+                ♥
+              </span>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import couplePhoto from "@/app/assets/couple-photo.jpeg";
 import Image from "next/image";
@@ -48,11 +49,11 @@ const OurStory = () => {
       }
     >
       {/* Decorative Background Image */}
-      <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
+      <div className="absolute top-0 left-0 w-full sm:w-1/3 h-full">
         <Image
           src={couplePhoto}
           alt=""
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-[left_40%_top_0] opacity-40 sm:opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-r from-transparent to-background" />
       </div>
@@ -73,46 +74,72 @@ const OurStory = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline Line */}
+          {/* Desktop timeline centre line */}
           <div
             className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
             style={{ backgroundColor: "hsl(var(--palette-pink) / 0.3)" }}
           />
 
           {timeline.map((item, index) => (
-            <motion.div
-              key={item.year}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative flex items-center mb-12 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-            >
-              {/* Content */}
-              <div
-                className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
+            <React.Fragment key={item.year}>
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`relative flex items-center md:mb-12 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
               >
-                <div className="glass p-6 rounded-lg shadow-lg">
-                  <h3 className="font-display text-xl text-foreground mt-2 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground font-body">
-                    {item.description}
-                  </p>
+                {/* Content */}
+                <div
+                  className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
+                >
+                  <div className="glass p-6 rounded-lg shadow-lg">
+                    <h3 className="font-display text-xl text-foreground mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground font-body">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Timeline Dot */}
-              <div
-                className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background shadow-lg"
-                style={{ backgroundColor: "hsl(var(--palette-pink))" }}
-              />
+                {/* Desktop timeline dot */}
+                <div
+                  className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background shadow-lg"
+                  style={{ backgroundColor: "hsl(var(--palette-pink))" }}
+                />
 
-              {/* Spacer for other side */}
-              <div className="hidden md:block flex-1" />
-            </motion.div>
+                {/* Desktop spacer for other side */}
+                <div className="hidden md:block flex-1" />
+              </motion.div>
+
+              {/* Mobile connector — dot + line between cards, not after last */}
+              {index < timeline.length - 1 && (
+                <div className="flex md:hidden flex-col items-center py-6">
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: "hsl(var(--palette-pink) / 0.5)",
+                    }}
+                  />
+                  <div
+                    className="w-px my-2"
+                    style={{
+                      height: "6rem",
+                      backgroundColor: "hsl(var(--palette-pink) / 0.3)",
+                    }}
+                  />
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: "hsl(var(--palette-pink) / 0.5)",
+                    }}
+                  />
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>

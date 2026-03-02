@@ -61,7 +61,7 @@ const OurStory = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1.2, delay: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -85,7 +85,7 @@ const OurStory = () => {
               <motion.div
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: 0.8 + index * 0.15 }}
                 viewport={{ once: true }}
                 className={`relative flex items-center md:mb-12 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"

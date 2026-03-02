@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import couplePhoto from "@/app/assets/reception-blurred.jpeg";
 
 const InvitationLetter = () => {
@@ -13,15 +14,15 @@ const InvitationLetter = () => {
       }
     >
       {/* Background image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${couplePhoto.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={couplePhoto}
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
       {/* Subtle dark overlay */}
       <div

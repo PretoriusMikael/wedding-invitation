@@ -1,44 +1,91 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import couplePhoto from "@/app/assets/couple-photo.jpeg";
 import Image from "next/image";
 
-const OurStory = () => {
-  const timeline = [
-    {
-      year: "2019",
-      title: "First Meeting",
-      description:
-        "We first met in 2018 at the Lourensford Market in Somerset West. Heinrich was working there that day, while Tamryn was enjoying the market with friends. One of her friends knew Heinrich from university and introduced us. A simple hello quickly turned into a flowing conversation, and Tamryn found herself returning to the same stall again and again. Eventually, she gathered the courage to ask for Heinrich's number and just like that, our story really began.",
-    },
-    {
-      year: "2020",
-      title: "An Impression That Lasted",
-      description:
-        "As we spent more time together and shared our pasts, we realized our paths had crossed long before that day at the market. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn't speak that evening, the moment left a quiet impression that stayed with him.",
-    },
-    {
-      year: "2022",
-      title: "A Shared Beginning",
-      description:
-        "In December of 2018, we discovered that our birthdays are just one day apart. As we talked more, we realised that we were born in the same hospital and perhaps even shared the same nursery in the very first days of life.",
-    },
-    {
-      year: "2024",
-      title: "Guided by Grace",
-      description:
-        "Looking back, these moments no longer feel like coincidences, but rather gentle reminders of the Lord's hand guiding our lives and leading us toward one another long before we knew it. With grateful hearts, we are so excited to say 'I do' and celebrate the forever He has been preparing for us all along.",
-    },
-    {
-      year: "2026",
-      title: "Forever Begins",
-      description:
-        "We invite you to witness the beginning of our greatest adventure together.",
-    },
-  ];
+const timeline = [
+  {
+    year: "2019",
+    title: "First Meeting",
+    description:
+      "We first met in 2018 at the Lourensford Market in Somerset West. Heinrich was working there that day, while Tamryn was enjoying the market with friends. One of her friends knew Heinrich from university and introduced us. A simple hello quickly turned into a flowing conversation, and Tamryn found herself returning to the same stall again and again. Eventually, she gathered the courage to ask for Heinrich's number and just like that, our story really began.",
+  },
+  {
+    year: "2020",
+    title: "An Impression That Lasted",
+    description:
+      "As we spent more time together and shared our pasts, we realized our paths had crossed long before that day at the market. Heinrich remembered noticing Tamryn at his matric farewell in 2017. Although we didn't speak that evening, the moment left a quiet impression that stayed with him.",
+  },
+  {
+    year: "2022",
+    title: "A Shared Beginning",
+    description:
+      "In December of 2018, we discovered that our birthdays are just one day apart. As we talked more, we realised that we were born in the same hospital and perhaps even shared the same nursery in the very first days of life.",
+  },
+  {
+    year: "2024",
+    title: "Guided by Grace",
+    description:
+      "Looking back, these moments no longer feel like coincidences, but rather gentle reminders of the Lord's hand guiding our lives and leading us toward one another long before we knew it. With grateful hearts, we are so excited to say 'I do' and celebrate the forever He has been preparing for us all along.",
+  },
+  {
+    year: "2026",
+    title: "Forever Begins",
+    description:
+      "We invite you to witness the beginning of our greatest adventure together.",
+  },
+];
 
+interface TimelineCardProps {
+  item: (typeof timeline)[0];
+  index: number;
+}
+
+const TimelineCard = ({ item, index }: TimelineCardProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      animate={
+        isInView
+          ? { opacity: 1, x: 0 }
+          : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }
+      }
+      transition={{ duration: 0.8 }}
+      className={`relative flex items-center md:mb-12 ${
+        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+      }`}
+    >
+      {/* Content */}
+      <div
+        className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
+      >
+        <div className="glass p-6 rounded-lg shadow-lg">
+          <h3 className="font-display text-xl text-foreground mb-2">
+            {item.title}
+          </h3>
+          <p className="text-muted-foreground font-body">{item.description}</p>
+        </div>
+      </div>
+
+      {/* Desktop timeline dot */}
+      <div
+        className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background shadow-lg"
+        style={{ backgroundColor: "hsl(var(--palette-pink))" }}
+      />
+
+      {/* Desktop spacer for other side */}
+      <div className="hidden md:block flex-1" />
+    </motion.div>
+  );
+};
+
+const OurStory = () => {
   return (
     <section
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
@@ -57,6 +104,7 @@ const OurStory = () => {
         />
         <div className="absolute inset-0 bg-linear-to-r from-transparent to-background" />
       </div>
+
       <div className="container max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -82,38 +130,7 @@ const OurStory = () => {
 
           {timeline.map((item, index) => (
             <React.Fragment key={item.year}>
-              <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 + index * 0.15 }}
-                viewport={{ once: true }}
-                className={`relative flex items-center md:mb-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Content */}
-                <div
-                  className={`flex-1 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
-                >
-                  <div className="glass p-6 rounded-lg shadow-lg">
-                    <h3 className="font-display text-xl text-foreground mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground font-body">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Desktop timeline dot */}
-                <div
-                  className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background shadow-lg"
-                  style={{ backgroundColor: "hsl(var(--palette-pink))" }}
-                />
-
-                {/* Desktop spacer for other side */}
-                <div className="hidden md:block flex-1" />
-              </motion.div>
+              <TimelineCard item={item} index={index} />
 
               {/* Mobile connector — dot + line between cards, not after last */}
               {index < timeline.length - 1 && (

@@ -83,7 +83,7 @@ const VenueSection = () => {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="p-2 space-y-4">
               <div className="flex items-start gap-4">
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"

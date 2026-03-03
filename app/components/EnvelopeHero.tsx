@@ -3,9 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import roughPaper from "@/app/assets/slightly-textured-wallpaper-pattern.jpg";
 import Image from "next/image";
-import logo from "@/app/assets/ht-logo.jpeg";
+import envelopeBg from "@/app/assets/wax-seal-envelope.png";
 
 type Phase = "closed" | "opening" | "leaving" | "done";
 
@@ -24,9 +23,9 @@ const EnvelopeHero = () => {
 
   const handleOpen = useCallback(() => {
     if (phase !== "closed") return;
-    // Open the flap, then after the flap animation auto-slide up
     setPhase("opening");
-    setTimeout(() => setPhase("leaving"), 700);
+    // No flap to wait for — brief pause for tactile feel, then slide away
+    setTimeout(() => setPhase("leaving"), 150);
   }, [phase]);
 
   // Wheel trigger
@@ -60,19 +59,12 @@ const EnvelopeHero = () => {
 
   if (phase === "done") return null;
 
-  const isFlapOpen = phase !== "closed";
   const isLeaving = phase === "leaving";
 
   return (
     <motion.div
       className="fixed inset-0 z-50 select-none overflow-hidden"
-      style={{
-        backgroundColor: "hsl(var(--envelope))",
-        backgroundImage: `url(${roughPaper.src})`,
-        backgroundSize: "cover",
-        backgroundBlendMode: "soft-light",
-        cursor: phase === "closed" ? "pointer" : "default",
-      }}
+      style={{ cursor: phase === "closed" ? "pointer" : "default" }}
       animate={{ y: isLeaving ? "-100%" : "0%" }}
       transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => {
@@ -80,114 +72,36 @@ const EnvelopeHero = () => {
       }}
       onClick={phase === "closed" ? handleOpen : undefined}
     >
-      {/* ── Left diagonal fold ── */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          clipPath: "polygon(0 0, 50% 50%, 0 100%)",
-          backgroundColor: "hsl(var(--envelope-dark))",
-          backgroundImage: `url(${roughPaper.src})`,
-          backgroundSize: "cover",
-          backgroundBlendMode: "soft-light",
-        }}
-      />
-
-      {/* ── Right diagonal fold ── */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          clipPath: "polygon(100% 0, 50% 50%, 100% 100%)",
-          backgroundColor: "hsl(var(--envelope-dark))",
-          backgroundImage: `url(${roughPaper.src})`,
-          backgroundSize: "cover",
-          backgroundBlendMode: "soft-light",
-        }}
-      />
-
-      {/* ── Bottom fold ── */}
-      <div
-        className="absolute inset-0 z-10"
-        style={{
-          clipPath: "polygon(0 100%, 50% 50%, 100% 100%)",
-          backgroundColor: "hsl(var(--envelope))",
-          backgroundImage: `url(${roughPaper.src})`,
-          backgroundSize: "cover",
-          backgroundBlendMode: "soft-light",
-        }}
-      />
-
-      {/* ── Top flap — collapses flat when opening ── */}
-      <motion.div
-        className="absolute inset-0 z-20"
-        animate={{
-          clipPath: isFlapOpen
-            ? "polygon(0 0, 50% 0%, 100% 0)"
-            : "polygon(0 0, 50% 50%, 100% 0)",
-        }}
-        transition={{ duration: 1.1, ease: [0.4, 0, 0.2, 1] }}
-      >
-        {/* Flap base colour */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: "hsl(var(--envelope-flap))",
-            backgroundImage: `url(${roughPaper.src})`,
-            backgroundSize: "cover",
-            backgroundBlendMode: "soft-light",
-          }}
+      {/* ── Full-screen envelope photograph ── */}
+      <div className="absolute inset-0">
+        <Image
+          src={envelopeBg}
+          alt="Wedding envelope with H&T wax seal"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={95}
         />
-        {/* Subtle crease shadow toward the tip */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent 55%, hsl(var(--envelope-dark) / 0.22) 100%)",
-          }}
-        />
-      </motion.div>
+      </div>
 
-      {/* ── Wax seal — dissolves as the flap opens ── */}
-      <motion.div
-        className="absolute z-30 pointer-events-none"
+      {/* ── Edge vignette — adds depth without hiding the photo ── */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          top: "33%",
-          left: "50%",
-          translateX: "-50%",
-          translateY: "-50%",
+          background:
+            "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.22) 100%)",
         }}
-        animate={{
-          opacity: isFlapOpen ? 0 : 1,
-          scale: isFlapOpen ? 0.55 : 1,
-          y: isFlapOpen ? -24 : 0,
+      />
+
+      {/* ── Bottom gradient — keeps the hint text readable ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none"
+        style={{
+          height: "10rem",
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.38) 0%, transparent 100%)",
         }}
-        transition={{ duration: 0.5, ease: "easeIn" }}
-      >
-        <div
-          className="w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center relative"
-          style={{
-            backgroundColor: "hsl(var(--wax-seal))",
-            boxShadow:
-              "0 6px 28px hsl(var(--wax-seal) / 0.45), inset 0 1px 0 rgba(255,255,255,0.15)",
-          }}
-        >
-          <div
-            className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full"
-            style={{ border: "1.5px solid hsl(var(--palette-blue) / 0.5)" }}
-          />
-          <span
-            className="font-display text-xl md:text-2xl"
-            style={{ color: "hsl(var(--palette-blue))" }}
-          >
-            <Image
-              src={logo}
-              alt="logo"
-              width={100}
-              height={100}
-              className="rounded-full"
-            />
-          </span>
-        </div>
-      </motion.div>
+      />
 
       {/* ── Scroll / tap hint — only shown while closed ── */}
       <motion.div
@@ -204,7 +118,7 @@ const EnvelopeHero = () => {
       >
         <p
           className="font-body tracking-widest uppercase text-xs"
-          style={{ color: "hsl(var(--muted-foreground))" }}
+          style={{ color: "rgba(255, 255, 255, 0.88)" }}
         >
           Scroll or tap to open
         </p>
@@ -214,7 +128,7 @@ const EnvelopeHero = () => {
         >
           <ChevronDown
             className="w-4 h-4"
-            style={{ color: "hsl(var(--palette-amber))" }}
+            style={{ color: "rgba(255, 255, 255, 0.7)" }}
           />
         </motion.div>
       </motion.div>

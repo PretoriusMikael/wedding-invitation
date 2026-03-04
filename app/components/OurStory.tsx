@@ -220,6 +220,7 @@ const OurStory = () => {
                   border: "1px solid hsl(var(--palette-pink) / 0.22)",
                   boxShadow:
                     "0 8px 40px hsl(var(--foreground) / 0.08), 0 2px 8px hsl(var(--foreground) / 0.05)",
+                  touchAction: "none",
                 }}
               >
                 {/* Title row — never shrinks */}

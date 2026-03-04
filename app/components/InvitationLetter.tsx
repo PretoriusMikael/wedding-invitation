@@ -12,14 +12,15 @@ const InvitationLetter = () => {
         } as React.CSSProperties
       }
     >
-      {/* Background image */}
+      {/* Background image — .parallax-bg applies background-attachment: fixed
+          on desktop (hover/pointer capable devices) only, falling back to
+          scroll on mobile where fixed attachment is broken in iOS Safari. */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 parallax-bg"
         style={{
           backgroundImage: `url(${couplePhoto.src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
         }}
       />
 

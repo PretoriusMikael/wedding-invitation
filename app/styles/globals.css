@@ -272,6 +272,20 @@
 }
 
 @layer utilities {
+  /* Parallax background — fixed attachment on desktop (md+) only.
+     background-attachment: fixed is broken inside non-body elements on
+     iOS Safari and most mobile browsers, so we default to scroll and
+     only opt-in to fixed on pointer/hover-capable (desktop) screens. */
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .parallax-bg {
+      background-attachment: fixed;
+    }
+  }
+
   .font-display {
     font-family: var(--font-display);
   }

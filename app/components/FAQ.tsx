@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Is there a gift registry or preferred way to give gifts?",
     answer:
-      "Your presence at our wedding is truly the greatest gift we could ask for, and we are so grateful to celebrate this special day with you. Should you wish to honour us with a gift, amonetary gift towards our future home would deeply be appreciated. Alternatively, we will share a small registry closer to the time for those who prefer to gift something for our home.",
+      "Your presence at our wedding is truly the greatest gift we could ask for, and we are so grateful to celebrate this special day with you. Should you wish to honour us with a gift, a monetary gift towards our future home would deeply be appreciated. Alternatively, we will share a small registry closer to the time for those who prefer to gift something for our home.",
   },
 ];
 

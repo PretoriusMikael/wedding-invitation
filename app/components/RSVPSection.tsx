@@ -212,7 +212,7 @@ const RSVPSection = () => {
                   <span style={{ color: "hsl(var(--palette-blue))" }}>✦</span>
                 </div>
                 <p className="text-muted-foreground font-body text-lg mt-6">
-                  Please RSVP by the 30th of April, 2026
+                  Please RSVP by the 15th of May, 2026
                 </p>
               </div>
 

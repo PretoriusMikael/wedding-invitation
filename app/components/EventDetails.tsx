@@ -15,7 +15,7 @@ const EventDetails = () => {
     {
       icon: Clock,
       title: "The Time",
-      content: "Guests to arrive from 15:00\nCeremony start at 15:30",
+      content: "Guests to arrive from 15:00\nCeremony starts at 15:30",
     },
     {
       icon: MapPin,

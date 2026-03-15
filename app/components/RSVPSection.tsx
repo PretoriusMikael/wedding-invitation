@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Heart, Music, Plus, X } from "lucide-react";
 import { useToast } from "@/app/hooks/use-toast";
@@ -8,6 +8,7 @@ import reception from "@/app/assets/arch.jpeg";
 import Image from "next/image";
 
 const RSVPSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -74,8 +75,18 @@ const RSVPSection = () => {
     setIsSubmitted(false);
   };
 
+  useEffect(() => {
+    if (isSubmitted) {
+      sectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isSubmitted]);
+
   return (
     <section
+      ref={sectionRef}
       id="rsvp-section"
       className="snap-section relative flex items-center justify-center py-20 px-4 overflow-hidden"
       style={
@@ -337,7 +348,7 @@ const RSVPSection = () => {
                         </p>
 
                         {/* Input row */}
-                        <div className="flex gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2">
                           <input
                             ref={songInputRef}
                             type="text"
@@ -353,7 +364,7 @@ const RSVPSection = () => {
                             onClick={addSong}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex items-center gap-1.5 px-4 py-3 rounded-lg font-body text-sm font-medium shrink-0 transition-colors"
+                            className="flex items-center gap-1.5 px-4 py-3 rounded-lg font-body text-sm font-medium transition-colors shrink-0"
                             style={{
                               backgroundColor:
                                 "hsl(var(--palette-amber) / 0.12)",

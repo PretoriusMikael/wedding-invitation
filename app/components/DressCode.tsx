@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Flower } from "lucide-react";
+import { ArrowUpRight, Flower } from "lucide-react";
 // Custom SVG icons — lucide-react has no bow tie or heel
 const HeelIcon = ({
   className,
@@ -61,17 +61,33 @@ import Image from "next/image";
 
 const ladies = [
   // "Midi or full-length dresses",
-  "Light, flowy fabrics",
-  "Soft pastels & florals",
-  "Block heels or elegant sandals",
-  "Colours are welcome",
+  "Colour is encouraged, whether soft or vibrant",
+  "Flowing fabrics",
+  "Block heels, wedges or elegant sandals recommended for the garden setting",
 ];
 
 const gentlemen = [
-  "Chinos or dress trousers are welcome",
-  "Lightweight blazers, suits, and ties are optional",
-  "Dress shoes or loafers",
-  "Soft colours are welcome",
+  "Summer suit or slacks with a button down shirt",
+  "Casual or dress shoes",
+  "No jeans, shorts or flip-flops",
+];
+
+const inspirationTags = [
+  "Floral dresses",
+  "Linen suits",
+  "Soft pastels",
+  "Garden elegance",
+  "Spring colours",
+  "Flowing fabrics",
+  "Light textures",
+  "Relaxed tailoring",
+  "Pastel tones",
+  "Winelands chic",
+  "Summer suits",
+  "Elegant prints",
+  "Light layers",
+  "Natural fabrics",
+  "Romantic silhouettes",
 ];
 
 const DressCode = () => {
@@ -189,7 +205,7 @@ const DressCode = () => {
                 backgroundClip: "text",
               }}
             >
-              Semi-Formal Garden Chic
+              Semi-Formal Spring in the Winelands
             </span>
             <Flower
               className="w-5 h-5"
@@ -204,11 +220,10 @@ const DressCode = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="font-body text-center text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-14"
+          className="font-body text-center text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-14 italic"
           style={{ color: "hsl(var(--muted-foreground))" }}
         >
-          Think light, flowy fabrics, soft pastels, florals, and garden-inspired
-          elegance. Keep it fresh and elegant!
+          Think colourful spring florals and relaxed windelands elegance
         </motion.p>
 
         {/* Ladies & Gentlemen cards */}
@@ -361,6 +376,64 @@ const DressCode = () => {
             </ul>
           </motion.div>
         </div>
+        {/* Inspiration */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto mt-12 flex flex-col items-center text-center"
+        >
+          <p
+            className="font-body text-lg"
+            style={{ color: "hsl(var(--muted-foreground))" }}
+          >
+            Need inspiration?
+          </p>
+
+          <a
+            href="https://pin.it/15ELp3RY6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-6 px-5 py-2 rounded-full transition-all duration-200 group hover:scale-[1.03]"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(var(--palette-pink) / 0.15), hsl(var(--palette-blue) / 0.15))",
+              border: "1px solid hsl(var(--border))",
+            }}
+          >
+            Explore our Pinterest board
+            <ArrowUpRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+            />
+          </a>
+
+          <div className="relative overflow-hidden mt-8 w-full">
+            <motion.div
+              className="flex gap-6 w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                ease: "linear",
+                duration: 40,
+                repeat: Infinity,
+              }}
+            >
+              {[...inspirationTags, ...inspirationTags].map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 rounded-full"
+                  style={{
+                    background: "hsl(var(--palette-pink) / 0.06)",
+                    color: "hsl(var(--muted-foreground))",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

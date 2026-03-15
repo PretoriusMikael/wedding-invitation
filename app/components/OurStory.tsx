@@ -159,7 +159,7 @@ const OurStory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center"
         >
           <h2 className="font-display text-4xl md:text-6xl text-foreground">
             Our Love Story
@@ -177,7 +177,7 @@ const OurStory = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center font-body text-xs tracking-[0.25em] uppercase mb-8"
+            className="text-center font-body text-xs tracking-[0.25em] uppercase mb-16"
             style={{ color: "hsl(var(--muted-foreground))" }}
           >
             Chapter{" "}

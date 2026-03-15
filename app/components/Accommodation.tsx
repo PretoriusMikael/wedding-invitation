@@ -128,8 +128,7 @@ const AccommodationItem = ({
       <span
         className="font-body text-sm shrink-0 px-3 py-1 rounded-full"
         style={{
-          color: "hsl(var(--palette-olive))",
-          backgroundColor: "hsl(var(--palette-olive) / 0.1)",
+          backgroundColor: "hsl(var(--palette-olive) / 0.3)",
         }}
       >
         {distance}
@@ -284,7 +283,7 @@ const Accommodation = () => {
             style={{
               borderColor: "hsl(var(--palette-olive) / 0.35)",
               color: "hsl(var(--muted-foreground))",
-              backgroundColor: "hsl(var(--palette-olive) / 0.3)",
+              backgroundColor: "hsl(var(--palette-olive) / 0.5)",
             }}
             onClick={() => {
               const venueSection = document.getElementById("venue-section");
@@ -293,10 +292,7 @@ const Accommodation = () => {
               }
             }}
           >
-            <MapPin
-              className="w-4 h-4"
-              style={{ color: "hsl(var(--palette-olive))" }}
-            />
+            <MapPin className="w-4 h-4" />
             DuVon Wine &amp; Wedding Estate, Robertson
           </div>
         </motion.div>

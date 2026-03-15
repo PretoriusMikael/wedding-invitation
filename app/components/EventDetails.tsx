@@ -35,11 +35,11 @@ const EventDetails = () => {
       }
     >
       {/* Decorative Background Image */}
-      <div className="absolute top-0 right-0 w-full sm:w-1/3 h-full opacity-25 sm:opacity-20">
+      <div className="absolute top-0 right-0 w-full sm:w-1/3 h-full opacity-40 sm:opacity-20">
         <Image
           src={flowersImage}
           alt=""
-          className="w-full h-full object-cover object-[right_25%_top_0]"
+          className="w-full h-full object-cover object-[right_30%_top_0]"
         />
         <div className="absolute inset-0 bg-linear-to-l from-transparent to-background" />
       </div>
@@ -50,7 +50,7 @@ const EventDetails = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center"
         >
           {/*<p className="text-accent font-body tracking-[0.3em] uppercase text-sm mb-4">
             Save the Date
@@ -63,7 +63,7 @@ const EventDetails = () => {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-16">
           {details.map((detail, index) => (
             <motion.div
               key={detail.title}
@@ -71,7 +71,7 @@ const EventDetails = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="glass rounded-lg p-8 text-center shadow-lg border-2 border-palette-olive/30"
+              className="glass rounded-2xl p-8 text-center shadow-lg border-2 border-palette-olive/30"
             >
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-palette-olive/10 flex items-center justify-center">
                 <detail.icon className="w-8 h-8 text-palette-olive" />
